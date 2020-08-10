@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advanced Teknologies</title>
+    <link>https://advt3.com/</link>
+    <description>Recent content on Advanced Teknologies</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Dec 2019 17:20:01 +0100</lastBuildDate>
+    
+	<atom:link href="https://advt3.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Cloud instances for your Cuda loads</title>
+      <link>https://advt3.com/posts/cloud_gpu/</link>
+      <pubDate>Thu, 28 May 2020 10:22:09 +0200</pubDate>
+      
+      <guid>https://advt3.com/posts/cloud_gpu/</guid>
+      <description>Introduction Writing an algorithm employing Cuda does not require a state of the art GPU. However, to reap the benefits of massively parallel processing it is required a powerful one.</description>
+    </item>
+    
+    <item>
+      <title>Benchmarking OpenCV with Cuda implementation</title>
+      <link>https://advt3.com/posts/benchmarking_opencv_cuda/</link>
+      <pubDate>Mon, 18 May 2020 14:39:55 +0200</pubDate>
+      
+      <guid>https://advt3.com/posts/benchmarking_opencv_cuda/</guid>
+      <description>How do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?</description>
+    </item>
+    
+    <item>
+      <title>Development environment on Ubuntu 20.04 LTS</title>
+      <link>https://advt3.com/posts/development_environment/</link>
+      <pubDate>Mon, 27 Apr 2020 00:30:32 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/development_environment/</guid>
+      <description>Introduction Having proper foundations in software usually translates on having a software project easy to extend and faster to develop. On its core, software engineering provides tools to improve: Business Value, Code Quality, and Process Predictability (Our primary focus).</description>
+    </item>
+    
+    <item>
+      <title>Building a Crossplatform Cuda application</title>
+      <link>https://advt3.com/posts/running_cuda_cpp_python/</link>
+      <pubDate>Sat, 01 Feb 2020 14:07:00 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/running_cuda_cpp_python/</guid>
+      <description>Following our Development environment setup, We implement our first C++ and Cuda application modules. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</description>
+    </item>
+    
+    <item>
+      <title>References</title>
+      <link>https://advt3.com/references/</link>
+      <pubDate>Wed, 25 Dec 2019 17:20:01 +0100</pubDate>
+      
+      <guid>https://advt3.com/references/</guid>
+      <description>Nvidia  https://developer.nvidia.com/opencl https://developer.nvidia.com/cuda-gpus#compute https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about https://devblogs.nvidia.com/building-cuda-applications-cmake/  Cloud  https://aws.amazon.com/ec2/instance-types/p2/  Courses  https://www.pluralsight.com/courses/parallel-computing-cuda  Books  CMake Cookbock Cuda by example  </description>
+    </item>
+    
+    <item>
+      <title>Getting started with accelerated computing</title>
+      <link>https://advt3.com/posts/getting_started/</link>
+      <pubDate>Sun, 08 Dec 2019 11:55:27 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/getting_started/</guid>
+      <description>Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://advt3.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://advt3.com/about/</guid>
+      <description>Santiago Hurtado I am a software engineer with extensive experience in the development of data processing systems, specialized in the design and optimization of challenging software.</description>
+    </item>
+    
+  </channel>
+</rss>

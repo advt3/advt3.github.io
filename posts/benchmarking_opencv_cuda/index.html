@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> Santiago Hurtado | Benchmarking OpenCV with Cuda implementation </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Software Engineering">
+    
+    <link rel="stylesheet" href="https://advt3.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://advt3.comfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
+    <link rel="canonical" href="https://advt3.com/posts/benchmarking_opencv_cuda/">
+    
+    
+    <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Benchmarking OpenCV with Cuda implementation"/>
+<meta name="twitter:description" content="How do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?"/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://advt3.com/img/at3.jpg" alt="profile picture">
+        <h3 title=""><a href="/">Advanced Teknologies</a></h3>
+        <div class="description">
+          <p>Software Engineering</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/advt3/tekio" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.linkedin.com/in/santiagohurtado/" rel="me" aria-label="Linkedin">
+          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/wakesanti" rel="me" aria-label="twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Santiago Hurtado 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about" title="">About</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Benchmarking OpenCV with Cuda implementation
+        </h3>
+        
+        </div>
+
+    <p>How do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?.
+<img src="/img/highway-2025863_640.jpg" alt="speed"></p>
+<p>We have compared a CPU and a GPU Implementation of a motion detection algorithm using OpenCV Using Google benchmark. It is quite easy to use for C++ and has clear documentation.</p>
+<p><strong>Writen by: Santiago Hurtado</strong></p>
+<h2 id="dependencies">Dependencies:</h2>
+<p>Opencv with contrib plugin</p>
+<ul>
+<li><a href="https://github.com/opencv/opencv.git">https://github.com/opencv/opencv.git</a></li>
+<li><a href="https://github.com/opencv/opencv_contrib.git">https://github.com/opencv/opencv_contrib.git</a></li>
+<li><a href="https://github.com/google/benchmark">https://github.com/google/benchmark</a></li>
+<li>Cuda 10.1</li>
+<li>Cmake 3.16</li>
+</ul>
+<h2 id="the-source-code-can-be-found-here">The source code can be found here:</h2>
+<p><a href="https://github.com/advt3/ComputerVision">https://github.com/advt3/ComputerVision</a></p>
+<h2 id="results">Results</h2>
+<p>Using Nvprof you can find that the GPU usage exceeds the time to copy the image(almost 3%) to the GPU.</p>
+<p>The benchmark results give a small improvement in the time to process 100 frames. However, since half the CPU time is used, we are giving time for the CPU to run other tasks.</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Time</th>
+<th>CPU Time</th>
+<th>Iterations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Motion Detection</td>
+<td>11042573535 ns</td>
+<td>1016352801 ns</td>
+<td>10</td>
+</tr>
+<tr>
+<td>GPU Motion Detection</td>
+<td>10 10501045308 ns</td>
+<td>481241482 ns</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="next-tasks">Next Tasks</h2>
+<p>In our next task, we will run the benchmarks on a cloud VM to see the differences using better hardware.</p>
+<p>Stay tuned.</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://advt3.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153698250-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> Santiago Hurtado | Building a Crossplatform Cuda application </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Software Engineering">
+    
+    <link rel="stylesheet" href="https://advt3.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://advt3.comfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
+    <link rel="canonical" href="https://advt3.com/posts/running_cuda_cpp_python/">
+    
+    
+    <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building a Crossplatform Cuda application"/>
+<meta name="twitter:description" content="Following our Development environment setup, We implement our first C&#43;&#43; and Cuda application modules. We describe on this post the steps needed to build and integrate the Cuda system with C&#43;&#43; and Python using CMake."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://advt3.com/img/at3.jpg" alt="profile picture">
+        <h3 title=""><a href="/">Advanced Teknologies</a></h3>
+        <div class="description">
+          <p>Software Engineering</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/advt3/tekio" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.linkedin.com/in/santiagohurtado/" rel="me" aria-label="Linkedin">
+          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/wakesanti" rel="me" aria-label="twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Santiago Hurtado 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about" title="">About</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Building a Crossplatform Cuda application
+        </h3>
+        
+        </div>
+
+    <p>Following our <a href="https://advt3.com/posts/development_environment/">Development environment setup</a>, We implement our first C++ and Cuda <a href="https://github.com/advt3/tekio/blob/master/parallel_math/">application modules</a>. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</p>
+<p><strong>Writen by: Santiago Hurtado</strong></p>
+<p><img src="/img/construction.jpg" alt="Building">
+The explanations come with working code, so we describe only the key sections. We encourage you to get the code an play around. If any questions arise please don&rsquo;t hesitate to contact us by dm on <a href="https://twitter.com/WakeSanti">Twitter</a>.</p>
+<p>Building C/C++ Applications with CMake is one of the most widely used approaches, we decide to build this prototype using it for better reproducibility.
+<img src="/img/cmake.png" alt="CMake">
+Our system consists of three implementations: Serial, Multicore and Parallel, it also includes python interfaces and unit tests. The design at the moment supports the compilation
+of most of the modules separately, however makes the compilation take longer.</p>
+<h2 id="building-with-cmake">Building with CMake</h2>
+<h3 id="main-cmake">Main CMake</h3>
+<p>On the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/CMakeLists.txt">main Cmake</a> we use the include directory to have the common headers:</p>
+<pre><code>    include_directories(. include)
+</code></pre>
+<p>We also define the dependency on CUDA and C++ 14, since it is what Cuda supports at the moment.</p>
+<pre><code>    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CUDA_STANDARD 14)
+</code></pre>
+<p>Don&rsquo;t forget to enable testing to be able to use ctest</p>
+<pre><code>    enable_testing()
+</code></pre>
+<h3 id="serial-cmake">Serial CMake</h3>
+<p>The next step is to have our <a href="https://github.com/advt3/tekio/blob/master/parallel_math/serial/CMakeLists.txt">serial CMake</a> working. For this the key line needed for Boost Python to <a href="https://stackoverflow.com/questions/57885017/how-to-fix-can-not-be-used-when-making-a-shared-object-recompile-with-fpic?noredirect=1#comment102196594_57885017">work</a> is:</p>
+<pre><code>    option(BUILD_SHARED_LIBS &quot;Build libraries as shared as opposed to static&quot; ON)
+</code></pre>
+<h3 id="multicore-cmake">Multicore CMake</h3>
+<p>To have multithread support on the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/multicore/CMakeLists.txt">multicore CMake</a> we use Boost Threads library.</p>
+<pre><code>    find_package(Boost 1.70.0 COMPONENTS thread REQUIRED)
+</code></pre>
+<p>And also we have the same line to build shared libs.</p>
+<pre><code>    option(BUILD_SHARED_LIBS &quot;Build libraries as shared as opposed to static&quot; ON)
+</code></pre>
+<h3 id="parallel-cmake">Parallel CMake</h3>
+<p>For <a href="https://github.com/advt3/tekio/blob/master/parallel_math/parallel/CMakeLists.txt">Cuda support using CMake</a> we set the project as Cuda and allow the separated compilation.</p>
+<pre><code>    find_package(CUDA REQUIRED)
+    project(parallel_math_lib CUDA)
+    set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+</code></pre>
+<ul>
+<li>
+<p>Also we present automatically what architecture for cuda is supported by our device.</p>
+<pre><code>  cuda_select_nvcc_arch_flags(ARCH_FLAGS &quot;Auto&quot;)
+  list(APPEND CUDA_NVCC_FLAGS ${ARCH_FLAGS})
+</code></pre>
+</li>
+</ul>
+<h3 id="python-cmake">Python CMake</h3>
+<p>Having the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/CMakeLists.txt">compilation of Boost Python with CMake</a> code working proved to be tricky. It requires to have libraries with the proper versions specified, found by the Boost Python build, and after by CMake. On the docker build <a href="https://advt3.com/posts/essential_environment/">Essential environment setup</a> is presented how to build Boost with support for python 3.6.</p>
+<pre><code>    find_package(Boost 1.70.0 COMPONENTS thread python REQUIRED)
+    find_package(PythonInterp 3.6 REQUIRED)
+    find_package(PythonLibs 3.6 REQUIRED)
+    include_directories(${BOOST_INCLUDE_DIRS})
+</code></pre>
+<ul>
+<li>
+<p>The last piece is to have the lib build without the lib prefix:</p>
+<pre><code>  set_target_properties(serial_math PROPERTIES PREFIX &quot;&quot;)
+</code></pre>
+</li>
+<li>
+<p>The lib name has to match the module on the C++ <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/multicore_math.cpp">Code</a></p>
+<pre><code>  BOOST_PYTHON_MODULE (serial_math){ 
+          };
+</code></pre>
+</li>
+<li>
+<p>The coolest part is that you can run python tests(or any executable), the key section is to tell python where to find the .o</p>
+<pre><code>  add_test(
+      NAME
+      python_serial_test
+      COMMAND
+      ${CMAKE_COMMAND} -E env MATH_MODULE_PATH=$&lt;TARGET_FILE_DIR:serial_math&gt;
+      ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/serial_test.py
+  )
+</code></pre>
+</li>
+<li>
+<p>For python you need to append the path, a easy option is inside the python <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/tests/multicore_test.py">code</a></p>
+<pre><code>  sys.path.append(os.getenv('MATH_MODULE_PATH'))
+</code></pre>
+</li>
+</ul>
+<h3 id="unit-testing-build">Unit Testing Build</h3>
+<p>Lastly to have the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/tests/CMakeLists.txt">unit test running on CMake</a> we need to have install gtest, there are recipes that can install the gtest as well, but we try to keep it simple.</p>
+<ul>
+<li>
+<p>We need support for C++(gcc) and Cuda(nvcc)</p>
+<pre><code>  project(tests CXX CUDA)
+  set(CMAKE_CXX_STANDARD 14)
+  find_package(GTest REQUIRED)
+</code></pre>
+</li>
+<li>
+<p>Include the path of the gtest libraries</p>
+<pre><code>  include_directories(${GTEST_INCLUDE_DIRS})
+</code></pre>
+</li>
+<li>
+<p>Add an executable by module</p>
+<pre><code>  add_executable(serial_${PROJECT_NAME} serial_tests.cpp)        
+</code></pre>
+</li>
+<li>
+<p>Linking, dont forget that gtest needs pthread</p>
+<pre><code>  target_link_libraries(serial_${PROJECT_NAME} ${GTEST_LIBRARIES} pthread serial_math_lib)
+</code></pre>
+</li>
+<li>
+<p>Add the tests to ctest to be executed on the &lsquo;make test&rsquo; command</p>
+<pre><code>  add_test(
+      NAME serial_${PROJECT_NAME}
+      COMMAND $&lt;TARGET_FILE:serial_${PROJECT_NAME}&gt;
+  )
+</code></pre>
+</li>
+<li>
+<p>And repeat for each unit test file</p>
+</li>
+<li>
+<p>Dont forget to enable the tests</p>
+<pre><code>  enable_testing()
+</code></pre>
+</li>
+</ul>
+<h3 id="running-the-build">Running the build</h3>
+<p>We build everything, cross our fingers and run the tests.</p>
+<ul>
+<li>
+<p>Create a build folder</p>
+<pre><code>  mkdir build
+</code></pre>
+</li>
+<li>
+<p>Verify all the dependencies</p>
+<pre><code>  cd build
+  cmake ..
+</code></pre>
+</li>
+<li>
+<p>Build and test</p>
+<pre><code>  make
+  make test
+</code></pre>
+</li>
+</ul>
+<p>If everything works all six tests should pass.
+<img src="/img/tests.png" alt="Tests"></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>
+<p>To debug the make phase use</p>
+<pre><code>  make VERBOSE=1
+</code></pre>
+</li>
+<li>
+<p>To show the complete tests use</p>
+<pre><code>  ctest -V
+</code></pre>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>When working on having performant software it is important to understand the different trade-offs. You must always perform benchmarks and stress tests, find where the biggest bottlenecks and check the different opportunities to improve.</p>
+<p>The code done is far from optimal. If you are looking for an optimized solution is recommended to use libraries such as Cublas or Thrust, Where the theoretic performance of the device can be achieved.</p>
+<p>We assume the main applications are written in Std C++ that is why the unit tests are developed in C++ using GTest. Considering that Python is one of the most widely used multipurpose programming languages, it makes sense to provide an interface to be used easily by the end-user.</p>
+<p>Happy building!</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://devblogs.nvidia.com/building-cuda-applications-cmake/">https://devblogs.nvidia.com/building-cuda-applications-cmake/</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://advt3.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153698250-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

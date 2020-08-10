@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> Santiago Hurtado | Development environment on Ubuntu 18.04 LTS </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Software Engineering">
+    
+    <link rel="stylesheet" href="https://advt3.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://advt3.comfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
+    <link rel="canonical" href="https://advt3.com/posts/essential_environment/">
+    
+    
+    <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Development environment on Ubuntu 18.04 LTS"/>
+<meta name="twitter:description" content="Introduction Having proper foundations in software usually translates on having a software project easy to extend and faster to develop. On its core, software engineering provides tools to improve: Business Value, Code Quality and Process Predictability (Our primary focus)."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://advt3.com/img/at3.jpg" alt="profile picture">
+        <h3 title=""><a href="/">Tekio</a></h3>
+        <div class="description">
+          <p>Software Engineering</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/advt3/tekio" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.linkedin.com/in/santiagohurtado/" rel="me" aria-label="Linkedin">
+          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/santiwake" rel="me" aria-label="twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Santiago Hurtado 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about" title="">About</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Development environment on Ubuntu 18.04 LTS
+        </h3>
+        
+        </div>
+
+    <h1 id="introduction">Introduction</h1>
+<p>Having proper foundations in software usually translates on having a software project easy to extend and faster to develop. On its core, software engineering provides tools to improve: Business Value, Code Quality and Process Predictability (Our primary focus).</p>
+<p><img src="/img/abstract-219915_640.jpg" alt="Accelerated"></p>
+<p>Our goal is to introduce Software Engineering practices, that can help develop Cuda kernels inside larger C++ and Python codebases. In this post, we describe the steps and present key facts that help prepare your system and have it up and ready.</p>
+<p>We separate the post on the following sections: Environment Description, the architecture defined, system setup, additional software used, whats is missing and conclusions.</p>
+<p><strong>Writen by: Santiago Hurtado</strong></p>
+<h2 id="environment">Environment</h2>
+<p>We used a Linux environment tested on a bare-metal machine and also using docker containers. Docker provides good process predictability, and the benchmarks run on the bare-metal machine for performance reasons.</p>
+<p>The specifications used are the following:</p>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker Community Edition(CE)v19.03</li>
+<li>nVidia Container Toolkit</li>
+<li>CMake, C++, Boost, GTest and Python 3.6, Numpy</li>
+<li>*nVidia Quadro P400 GPU</li>
+</ul>
+<p>*The P400 seems to be an excellent card to learn Cuda since it provides an architecture 6.1 and is not expensive. However, to have higher performance is recommended an nVidia GeForce RTX 2060 GPU, at the least. <a href="https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/">https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/</a></p>
+<h2 id="project-architecture">Project Architecture</h2>
+<p>The project is developed mainly in C/C++ and the benchmarking interfaces and tests in Python. The project structure is  as follows:</p>
+<ul>
+<li>The &ldquo;include&rdquo; folder  contains the C++ Headers</li>
+<li>Massive parallel Cuda code can found on the &ldquo;parallel&rdquo; folder</li>
+<li>C++ CPU code on the &ldquo;multicore&rdquo; folder</li>
+<li>C++ Python on the &ldquo;interfaces&rdquo; folder</li>
+<li>Unit tests using GTest for the code written in C++  on the &ldquo;tests&rdquo; folder</li>
+<li>Finally Python code on the &ldquo;tests/benchmarks&rdquo; folder</li>
+</ul>
+<p>We call <strong>Multicore</strong> to the CPU Solution and <strong>Parallel</strong> to the massively parallel  GPU Solution. Semantically and technically, both terms are interchangeable. For now, it makes it easy to separate and understand what we&rsquo;re are trying to accomplish.</p>
+<h2 id="getting-everything-together">Getting everything together</h2>
+<p>To have a development environment in no time use Ubuntu Linux 18.04, documentation is very complete and diverse.</p>
+<h2 id="ubuntu-1804">Ubuntu 18.04</h2>
+<p>Installing ubuntu 18.04 and Cuda together is very straight forward, go to <a href="https://ubuntu.com/download/desktop,">https://ubuntu.com/download/desktop,</a> where there are many resources. I recommend the Budgie flavor since it is an ideal desktop environment. Many Linux distros have similar installation steps.</p>
+<p><strong>Note: WSL(Windows Subsystem for Linux) does not support CUDA for now.</strong></p>
+<h3 id="installing">Installing:</h3>
+<ul>
+<li>
+<p>Install the Linux distro on your machine, update and upgrade your system and restart.</p>
+</li>
+<li>
+<p>Next step is to install the nVidia driver, here is an excellent site that explains the  steps: <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux">https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux</a></p>
+<ul>
+<li><em>I recommend the second option Automatic Install using PPA repository</em> it lets you choose the latest driver (which is the one we need for the latest Cuda SDK).</li>
+</ul>
+</li>
+<li>
+<p>When installing a new driver on the kernel be aware that new computers might have security for the UEFI boot <a href="https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS">https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS</a> .</p>
+</li>
+</ul>
+<h2 id="cuda">Cuda</h2>
+<p>The next step is to install the Cuda toolkit from the <a href="https://developer.nvidia.com/cuda-toolkit">https://developer.nvidia.com/cuda-toolkit</a> website.</p>
+<ul>
+<li>
+<p>Go to the download site for the platform you are using. I assume ubuntu 18.04. <em>I recommend using the deb(network) option since lets you update with a single command</em>.</p>
+</li>
+<li>
+<p>Follow the guide on the bottom of the web page, <em>Since the GPU driver was installed, you should not have any issues</em>.</p>
+</li>
+<li>
+<p>Set up the development environment variables, The PATH and LD_LIBRARY_PATH should be set. <em>Don&rsquo;t forget to set the .bashrc</em>.</p>
+<ul>
+<li>
+<p><em>To use the nVidia tools with <strong>sudo</strong> use</em>:</p>
+<pre><code>      $ sudo env PATH=$PATH &lt;command&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>The last step is to restart the system and check that everything works. <em>Run the command and check that you see your card on the screen</em>.</p>
+<pre><code>  $ nvidia-smi
+</code></pre>
+</li>
+</ul>
+<p><img src="/img/nvidia-smi.jpg" alt="nvidia-smi"></p>
+<p>There are detailed instructions on the Cuda quick start <a href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html">https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html</a></p>
+<p>By now, everything should work for you.</p>
+<h2 id="dockers">Dockers</h2>
+<p>If you like, now you can install the docker-ce (community edition) on your system.</p>
+<ul>
+<li>
+<p>Follow the guide on the docker site <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a>.</p>
+</li>
+<li>
+<p>Afterward, install the repository for the nVidia docker from <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+</li>
+<li>
+<p>Add the package repositories</p>
+</li>
+<li>
+<p>Install the nvidia-container-toolkit</p>
+</li>
+<li>
+<p>If everything works, this command should show the same as the bare metal machine</p>
+<pre><code>  $ docker run --gpus all nvidia/cuda nvidia-smi
+</code></pre>
+</li>
+</ul>
+<h1 id="setting-additional-software">Setting additional software</h1>
+<p>Finally, we will setup our basic C++/Cuda/Python/Boost Environment.</p>
+<h2 id="docker-installation">Docker installation</h2>
+<p>It is recommended to install the software first on a docker image for predictability purposes.</p>
+<ul>
+<li>
+<p>We will use the nVidia Image as base</p>
+<pre><code>  &gt; FROM nvidia/cuda
+</code></pre>
+</li>
+<li>
+<p>Setup the environmental variables</p>
+<pre><code>  &gt; ENV LD_LIBRARY_PATH=&quot;/usr/local/lib&quot;
+  &gt; ENV CPLUS_INCLUDE_PATH=/usr/include/python3.6m
+</code></pre>
+</li>
+<li>
+<p>Update and upgrade</p>
+<pre><code>  &gt; RUN apt update &amp;&amp; apt upgrade -y
+</code></pre>
+</li>
+<li>
+<p>Install the new packages. <em>We separated the line so the cache is used in case you want to make changes</em></p>
+<pre><code>  &gt; RUN apt install -y build-essential cmake python3 python3-dev python3-numpy
+</code></pre>
+</li>
+<li>
+<p>Copy and install Boost with Python 3 support</p>
+<pre><code>  &gt; RUN tar xvfz /opt/parallel_math/boost_1_71_0.tar.gz -C /opt/ \
+  &amp;&amp; cd /opt/boost_1_71_0 \
+  &amp;&amp; ./bootstrap.sh --with-libraries=python,thread --with-python-version=3.6 --prefix=/usr/local \
+  &amp;&amp; echo &quot;using python : 3.6 : /usr/bin/python3.6 : /usr/include/python3.6m : /usr/lib ;&quot; \
+  &gt;&gt;/opt/boost_1_71_0/project-config.jam
+</code></pre>
+</li>
+<li>
+<p>Same here, we separate a line to use the cache</p>
+<pre><code>  &gt; RUN cd /opt/boost_1_71_0 &amp;&amp; ./b2 &amp;&amp; ./b2 install
+</code></pre>
+</li>
+<li>
+<p>Finally, install GTest. There are other options to install it using CMake, check the <a href="https://www.packtpub.com/eu/application-development/cmake-cookbook">CMake Cookbook</a> for details.</p>
+<pre><code>  &gt; RUN apt install -y libgtest-dev
+  &gt; WORKDIR /usr/src/googletest/googletest/build
+</code></pre>
+</li>
+<li>
+<p>We need to remove Python 2.7 to don&rsquo;t interfere with the Boost build. <em>A fix can be done on the CMakefile instead</em></p>
+<pre><code>  &gt; RUN cmake .. &amp;&amp; make &amp;&amp; make install &amp;&amp; apt remove -y python2*
+</code></pre>
+</li>
+</ul>
+<p>The complete docker file can be found here <a href="https://raw.githubusercontent.com/advt3/tekio/master/parallel_math/Dockerfile">https://raw.githubusercontent.com/advt3/tekio/master/parallel_math/Dockerfile</a></p>
+<p>There is a lot of work done so far and we have not presented any code to you. In the next post, we will focus mostly on the code <em>Multicore and the parallel implementation of the hello world algorithms</em>.</p>
+<p>In either case, you have a Cuda system ready and there are plenty of examples out there. You can start with the nVidia Samples <a href="https://github.com/NVIDIA/cuda-samples">https://github.com/NVIDIA/cuda-samples</a>. However, they are usually quite advanced.</p>
+<p>Happy coding and 2020!</p>
+<h1 id="references">References</h1>
+<p>List of references presented on this post:</p>
+<p><a href="https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/">https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/</a></p>
+<p><a href="https://ubuntu.com/download/desktop">https://ubuntu.com/download/desktop</a></p>
+<p><a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux">https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux</a></p>
+<p><a href="https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS">https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS</a></p>
+<p><a href="https://developer.nvidia.com/cuda-toolkit">https://developer.nvidia.com/cuda-toolkit</a></p>
+<p><a href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html">https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html</a></p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
+<p><a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+<p><a href="https://www.packtpub.com/eu/application-development/cmake-cookbook">https://www.packtpub.com/eu/application-development/cmake-cookbook</a></p>
+<p><a href="https://github.com/NVIDIA/cuda-samples">https://github.com/NVIDIA/cuda-samples</a></p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://advt3.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153698250-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> Santiago Hurtado | Getting started with accelerated computing </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Software Engineering">
+    
+    <link rel="stylesheet" href="https://advt3.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://advt3.comfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
+    <link rel="canonical" href="https://advt3.com/posts/getting_started/">
+    
+    
+    <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Getting started with accelerated computing"/>
+<meta name="twitter:description" content="Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://advt3.com/img/at3.jpg" alt="profile picture">
+        <h3 title=""><a href="/">Advanced Teknologies</a></h3>
+        <div class="description">
+          <p>Software Engineering</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/advt3/tekio" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.linkedin.com/in/santiagohurtado/" rel="me" aria-label="Linkedin">
+          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/wakesanti" rel="me" aria-label="twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Santiago Hurtado 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about" title="">About</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Getting started with accelerated computing
+        </h3>
+        
+        </div>
+
+    <p>Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA. Thus, finding the proper environment requires numerous variables to be considered.</p>
+<p>Standard computers usually include support for OpenCL. However, there are not many resources for learning. If you have a Mac, you could use Metal, but why will you constraint to Mac? Furthermore, OSx has no support for Nvidia cards since version 10.6.</p>
+<p>We have selected the nVidia ecosystem to develop our work. It supports not only the Cuda environment but also OpenCl <a href="https://developer.nvidia.com/opencl">https://developer.nvidia.com/opencl</a>. These facts, together with books and courses up to date on the topic, make it an appealing platform for learning. In either case, if you are interested in developing specific Intel, AMD, or Arm hardware, you might be better off learning OpenCL.</p>
+<p>Most of the nVidia cards found on business computers, don&rsquo;t support the new microarchitectures such as Kepler (Ok this if you are reading this, you might not even know what this means. I did not do a few months ago either). It means that you have to be aware of a concept called compute capability.</p>
+<p>Nvidia has specific microarchitectures for its GPUs that have evolved through the years <a href="https://developer.nvidia.com/cuda-gpus#compute">https://developer.nvidia.com/cuda-gpus#compute</a>. Each microarchitecture specifies a compute capability,  a Major and minor version. They will let you know what APIs the GPU will provide to your development. You must match your SDK to your compute capability <a href="https://en.wikipedia.org/wiki/CUDA">https://en.wikipedia.org/wiki/CUDA</a>. To use the latest one, you will need a compute capability greater than 3.  If you are an ML professional or hardcore aficionado, it might be a better fit to select compute capability 7 with the new tensor cores. That will also mean that you will need to spend a bit more money on the card.</p>
+<p>After selecting the hardware, the next step is choosing an OS. Windows or Linux are good options for developing apps.  Cuda seems to have excellent support for Linux.  We selected Ubuntu 18.04 for the ease of installation of the different modules and components, and has plenty of documentation. We are biased, so please make sure you have understood all the benefits and drawbacks. For instance, at the moment, Gpu dockers can only be run over Linux. There are also options to run remote debugging over ssh, among other benefits. If you are using a mac, don&rsquo;t upgrade to the latest OSX, since it will not work.</p>
+<p>To summarize, if you plan to use Cuda, OSX is not the best OS to work. If you want to be independent of a platform, OpenCL cand be a better option, even though learning resources are scarce and outdated. I don&rsquo;t recommend to buy a GPU card and look at what compute capability has. Price can vary from a few hundred euros to some thousand euros. It is possible to obtain an NVidia 6.1 Gpu capability for a couple of hundred euros. However, If you are just interested in playing around with Cuda, probably an AWS ec2 instance will suffice. <a href="https://aws.amazon.com/ec2/instance-types/p2/">https://aws.amazon.com/ec2/instance-types/p2/</a>.  I recommend this course to learn the basics of Cuda programming is not expensive, and you do not require any specific hardware. <a href="https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about">https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about</a>.</p>
+<p>Happy Learning!</p>
+<p><strong>Writen by: Santiago Hurtado</strong></p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://advt3.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153698250-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>
