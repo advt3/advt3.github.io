@@ -3,8 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://advt3.com/posts/findinglanelines/</loc>
+    <lastmod>2020-08-27T11:47:02+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://advt3.com/posts/</loc>
-    <lastmod>2020-05-28T10:22:09+02:00</lastmod>
+    <lastmod>2020-08-27T11:47:02+02:00</lastmod>
   </url>
   
   <url>
@@ -28,12 +33,12 @@
   </url>
   
   <url>
-    <loc>https://advt3.com/</loc>
+    <loc>https://advt3.com/references/</loc>
     <lastmod>2019-12-25T17:20:01+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://advt3.com/references/</loc>
+    <loc>https://advt3.com/</loc>
     <lastmod>2019-12-25T17:20:01+01:00</lastmod>
   </url>
   
@@ -43,7 +48,22 @@
   </url>
   
   <url>
+    <loc>https://advt3.com/posts/introduction/</loc>
+    <lastmod>2019-11-30T22:51:04+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://advt3.com/about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://advt3.com/currentprojects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://advt3.com/earlierprojects/</loc>
     <priority>0</priority>
   </url>
   

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Advanced Teknologies</title>
+    <title>Tekio</title>
     <link>https://advt3.com/</link>
-    <description>Recent content on Advanced Teknologies</description>
+    <description>Recent content on Tekio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Dec 2019 17:20:01 +0100</lastBuildDate>
     
 	<atom:link href="https://advt3.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Finding Lane Lines on the Road</title>
+      <link>https://advt3.com/posts/findinglanelines/</link>
+      <pubDate>Thu, 27 Aug 2020 11:47:02 +0200</pubDate>
+      
+      <guid>https://advt3.com/posts/findinglanelines/</guid>
+      <description>Introduction This is the first project for the @udacity Nano degree in self-driving car. The goals of this project is to Make a pipeline that finds lane lines on the road.</description>
+    </item>
     
     <item>
       <title>Using Cloud instances for your Cuda loads</title>
@@ -44,7 +53,7 @@
       <pubDate>Sat, 01 Feb 2020 14:07:00 +0100</pubDate>
       
       <guid>https://advt3.com/posts/running_cuda_cpp_python/</guid>
-      <description>Following our Development environment setup, We implement our first C++ and Cuda application modules. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</description>
+      <description>Following our Essential environment setup, We implement our first C++ and Cuda application modules. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</description>
     </item>
     
     <item>
@@ -66,12 +75,42 @@
     </item>
     
     <item>
+      <title>Introduction</title>
+      <link>https://advt3.com/posts/introduction/</link>
+      <pubDate>Sat, 30 Nov 2019 22:51:04 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/introduction/</guid>
+      <description>Nowadays, resource-intensive tasks are necessary for a variety of areas such as image, signal processing, IoT, or Machine learning. Executing such tasks efficiently (watts per flops) has become a priority, not only for edge computing but also for data centers.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://advt3.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://advt3.com/about/</guid>
-      <description>Santiago Hurtado I am a software engineer with extensive experience in the development of data processing systems, specialized in the design and optimization of challenging software.</description>
+      <description>Santiago Hurtado Linux engineer since 2001 and an MSc in Systems and Computing Engineering since 2011. Currently, developing flexible and efficient Linux systems to be deployed on the field in tough conditions.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://advt3.com/currentprojects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://advt3.com/currentprojects/</guid>
+      <description>Current Projects Tekio Platform #ComputerVision #HighPerformance #EmbbededLinuxSoftware
+Accelerated Internet of things platform with distributed processing and machine learning usage
+ CUDA Research and its usage of OpenCV Distributed processing using MQTT, Dockers, Cuda, OpenCV and Tensorflow with Python and C++  Lingen, Germany</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://advt3.com/earlierprojects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://advt3.com/earlierprojects/</guid>
+      <description>Earlier Projects  Tekio Self-adaptive Middleware #ComputerVision #SoftwareArchictecture
+A self-adaptive middleware platform to dynamically compose legacy software behavior of Computer Vision Algorithms.</description>
     </item>
     
   </channel>
