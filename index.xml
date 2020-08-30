@@ -71,7 +71,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://advt3.com/about/</guid>
-      <description>Santiago Hurtado Linux engineer since 2001 and an MSc in Systems and Computing Engineering since 2011. Currently, developing flexible and efficient Linux systems to be deployed on the field in tough conditions.</description>
+      <description>About Passionate about self-driving cars.
+Linux engineer since 2001 and an MSc in Systems and Computing Engineering from 2011. Currently, developing flexible and efficient Linux systems to be deployed on the field in tough conditions.</description>
     </item>
     
     <item>
@@ -80,9 +81,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://advt3.com/projects/</guid>
-      <description>Current Projects Tekio Platform #ComputerVision #HighPerformance #EmbbededLinuxSoftware
+      <description>Current Projects Tekio Platform Lingen, Germany
 Accelerated Internet of things platform with distributed processing and machine learning usage
- CUDA Research and its usage of OpenCV Distributed processing using MQTT, Dockers, Cuda, OpenCV and Tensorflow with Python and C++  Lingen, Germany</description>
+ CUDA Research and its usage of OpenCV Distributed processing at the Edge  Technology stack : MQTT, Dockers, Cuda, OpenCV and Tensorflow with Python and C++</description>
     </item>
     
   </channel>
