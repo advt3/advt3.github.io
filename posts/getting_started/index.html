@@ -16,7 +16,8 @@
     <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Getting started with accelerated computing"/>
-<meta name="twitter:description" content="Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA."/>
+<meta name="twitter:description" content="Happy Learning!
+Writen by: Santiago Hurtado"/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -73,10 +74,7 @@
         <li><a  href="/posts"  title="">Posts</a></li>
         
         
-        <li><a  href="/currentprojects"  title="">Current Projects</a></li>
-        
-        
-        <li><a  href="/earlierprojects"  title="">Earlier Projects</a></li>
+        <li><a  href="/projects"  title="">Projects</a></li>
         
         
         <li><a  href="/about"  title="">About</a></li>
@@ -101,14 +99,7 @@
         
         </div>
 
-    <p>Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA. Thus, finding the proper environment requires numerous variables to be considered.</p>
-<p>Standard computers usually include support for OpenCL. However, there are not many resources for learning. If you have a Mac, you could use Metal, but why will you constraint to Mac? Furthermore, OSx has no support for Nvidia cards since version 10.6.</p>
-<p>We have selected the nVidia ecosystem to develop our work. It supports not only the Cuda environment but also OpenCl <a href="https://developer.nvidia.com/opencl">https://developer.nvidia.com/opencl</a>. These facts, together with books and courses up to date on the topic, make it an appealing platform for learning. In either case, if you are interested in developing specific Intel, AMD, or Arm hardware, you might be better off learning OpenCL.</p>
-<p>Most of the nVidia cards found on business computers, don&rsquo;t support the new microarchitectures such as Kepler (Ok this if you are reading this, you might not even know what this means. I did not do a few months ago either). It means that you have to be aware of a concept called compute capability.</p>
-<p>Nvidia has specific microarchitectures for its GPUs that have evolved through the years <a href="https://developer.nvidia.com/cuda-gpus#compute">https://developer.nvidia.com/cuda-gpus#compute</a>. Each microarchitecture specifies a compute capability,  a Major and minor version. They will let you know what APIs the GPU will provide to your development. You must match your SDK to your compute capability <a href="https://en.wikipedia.org/wiki/CUDA">https://en.wikipedia.org/wiki/CUDA</a>. To use the latest one, you will need a compute capability greater than 3.  If you are an ML professional or hardcore aficionado, it might be a better fit to select compute capability 7 with the new tensor cores. That will also mean that you will need to spend a bit more money on the card.</p>
-<p>After selecting the hardware, the next step is choosing an OS. Windows or Linux are good options for developing apps.  Cuda seems to have excellent support for Linux.  We selected Ubuntu 18.04 for the ease of installation of the different modules and components, and has plenty of documentation. We are biased, so please make sure you have understood all the benefits and drawbacks. For instance, at the moment, Gpu dockers can only be run over Linux. There are also options to run remote debugging over ssh, among other benefits. If you are using a mac, don&rsquo;t upgrade to the latest OSX, since it will not work.</p>
-<p>To summarize, if you plan to use Cuda, OSX is not the best OS to work. If you want to be independent of a platform, OpenCL cand be a better option, even though learning resources are scarce and outdated. I don&rsquo;t recommend to buy a GPU card and look at what compute capability has. Price can vary from a few hundred euros to some thousand euros. It is possible to obtain an NVidia 6.1 Gpu capability for a couple of hundred euros. However, If you are just interested in playing around with Cuda, probably an AWS ec2 instance will suffice. <a href="https://aws.amazon.com/ec2/instance-types/p2/">https://aws.amazon.com/ec2/instance-types/p2/</a>.  I recommend this course to learn the basics of Cuda programming is not expensive, and you do not require any specific hardware. <a href="https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about">https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about</a>.</p>
-<p>Happy Learning!</p>
+    <p>Happy Learning!</p>
 <p><strong>Writen by: Santiago Hurtado</strong></p>
 
     </div>

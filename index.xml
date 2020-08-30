@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>Benchmarking OpenCV with Cuda implementation</title>
-      <link>https://advt3.com/posts/benchmarking_opencv_cuda/</link>
-      <pubDate>Mon, 18 May 2020 14:39:55 +0200</pubDate>
-      
-      <guid>https://advt3.com/posts/benchmarking_opencv_cuda/</guid>
-      <description>How do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?</description>
-    </item>
-    
-    <item>
       <title>Development environment on Ubuntu 20.04 LTS</title>
       <link>https://advt3.com/posts/development_environment/</link>
       <pubDate>Mon, 27 Apr 2020 00:30:32 +0100</pubDate>
@@ -71,16 +62,8 @@
       <pubDate>Sun, 08 Dec 2019 11:55:27 +0100</pubDate>
       
       <guid>https://advt3.com/posts/getting_started/</guid>
-      <description>Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA.</description>
-    </item>
-    
-    <item>
-      <title>Introduction</title>
-      <link>https://advt3.com/posts/introduction/</link>
-      <pubDate>Sat, 30 Nov 2019 22:51:04 +0100</pubDate>
-      
-      <guid>https://advt3.com/posts/introduction/</guid>
-      <description>Nowadays, resource-intensive tasks are necessary for a variety of areas such as image, signal processing, IoT, or Machine learning. Executing such tasks efficiently (watts per flops) has become a priority, not only for edge computing but also for data centers.</description>
+      <description>Happy Learning!
+Writen by: Santiago Hurtado</description>
     </item>
     
     <item>
@@ -94,23 +77,13 @@
     
     <item>
       <title></title>
-      <link>https://advt3.com/currentprojects/</link>
+      <link>https://advt3.com/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://advt3.com/currentprojects/</guid>
+      <guid>https://advt3.com/projects/</guid>
       <description>Current Projects Tekio Platform #ComputerVision #HighPerformance #EmbbededLinuxSoftware
 Accelerated Internet of things platform with distributed processing and machine learning usage
  CUDA Research and its usage of OpenCV Distributed processing using MQTT, Dockers, Cuda, OpenCV and Tensorflow with Python and C++  Lingen, Germany</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://advt3.com/earlierprojects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://advt3.com/earlierprojects/</guid>
-      <description>Earlier Projects  Tekio Self-adaptive Middleware #ComputerVision #SoftwareArchictecture
-A self-adaptive middleware platform to dynamically compose legacy software behavior of Computer Vision Algorithms.</description>
     </item>
     
   </channel>

@@ -18,11 +18,6 @@
   </url>
   
   <url>
-    <loc>https://advt3.com/posts/benchmarking_opencv_cuda/</loc>
-    <lastmod>2020-05-18T14:39:55+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://advt3.com/posts/development_environment/</loc>
     <lastmod>2020-04-27T00:30:32+01:00</lastmod>
   </url>
@@ -48,22 +43,12 @@
   </url>
   
   <url>
-    <loc>https://advt3.com/posts/introduction/</loc>
-    <lastmod>2019-11-30T22:51:04+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://advt3.com/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://advt3.com/currentprojects/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://advt3.com/earlierprojects/</loc>
+    <loc>https://advt3.com/projects/</loc>
     <priority>0</priority>
   </url>
   
