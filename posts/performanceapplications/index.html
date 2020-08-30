@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Santiago Hurtado | Accelerated Computing </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Embedded Linux Software Engineer">
+    
+    <link rel="stylesheet" href="https://advt3.com/css/style.min.5be3a155aa89a24586c761b1b5538c4040e3735ee32ac12a708dc1696c0982f5.css" integrity="sha256-W&#43;OhVaqJokWGx2GxtVOMQEDjc17jKsEqcI3BaWwJgvU=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://advt3.comfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
+    <link rel="canonical" href="https://advt3.com/posts/performanceapplications/">
+    
+    
+    <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Accelerated Computing"/>
+<meta name="twitter:description" content="Nowadays, resource-intensive tasks are necessary for a variety of areas such as image, signal processing, IoT, or Machine learning. Executing such tasks efficiently (watts per flops) has become a priority, not only for edge computing but also for data centers."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://advt3.com/img/SantiagoHWake.jpeg" alt="profile picture">
+        <h3 title=""><a href="/">Santiago Hurtado</a></h3>
+        <div class="description">
+          <p>Embedded Linux Software Engineer</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/hurtadosanti" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.linkedin.com/in/santiagohurtado/" rel="me" aria-label="Linkedin">
+          <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/wakesanti" rel="me" aria-label="twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Santiago Hurtado 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/"  title="">Home</a></li>
+        
+        
+        <li><a  href="/posts"  title="">Posts</a></li>
+        
+        
+        <li><a  href="/projects"  title="">Projects</a></li>
+        
+        
+        <li><a  href="/about"  title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Accelerated Computing
+        </h3>
+        
+        </div>
+
+    <p>Nowadays, resource-intensive tasks are necessary for a variety of areas such as image, signal processing, IoT, or Machine learning. Executing such tasks efficiently (watts per flops) has become a priority, not only for edge computing but also for data centers.</p>
+<p>Software Engineering provides tools and processes that help to deliver reliable software artifacts that fulfill defined quality attributes.</p>
+<p><strong>Writen by: Santiago Hurtado</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p><img src="/img/highway-2025863_640.jpg" alt="speed"></p>
+<p>Utilizing GPUs for general computing is not new. Today, several frameworks enable developers to obtain the advantages of SIMT (Single instruction, multiple threads) architectures, such as OpenCL, OpenMP, OpenACC, or even Metal on OSx and CUDA. Thus, finding the proper environment requires numerous variables to be considered.</p>
+<p>Standard computers usually include support for OpenCL. However, there are not many resources for learning. If you have a Mac, you could use Metal, but why will you constraint to Mac? Furthermore, OSx has no support for Nvidia cards since version 10.6.</p>
+<h1 id="nvidia-graphics-processing-units-for-parallel-processing">NVidia Graphics processing units for parallel processing</h1>
+<p>We have selected the nVidia ecosystem to develop our work. It supports not only the Cuda environment but also OpenCl <a href="https://developer.nvidia.com/opencl">https://developer.nvidia.com/opencl</a>. These facts, together with books and courses up to date on the topic, make it an appealing platform for learning. In either case, if you are interested in developing specific Intel, AMD, or Arm hardware, you might be better off learning OpenCL.</p>
+<p>Most of the nVidia cards found on business computers, don&rsquo;t support the new microarchitectures such as Kepler (Ok this if you are reading this, you might not even know what this means. I did not do a few months ago either). It means that you have to be aware of a concept called compute capability.</p>
+<p>Nvidia has specific microarchitectures for its GPUs that have evolved through the years <a href="https://developer.nvidia.com/cuda-gpus#compute">https://developer.nvidia.com/cuda-gpus#compute</a>. Each microarchitecture specifies a compute capability,  a Major and minor version. They will let you know what APIs the GPU will provide to your development. You must match your SDK to your compute capability <a href="https://en.wikipedia.org/wiki/CUDA">https://en.wikipedia.org/wiki/CUDA</a>. To use the latest one, you will need a compute capability greater than 3.  If you are an ML professional or hardcore aficionado, it might be a better fit to select compute capability 7 with the new tensor cores. That will also mean that you will need to spend a bit more money on the card.</p>
+<p>After selecting the hardware, the next step is choosing an OS. Windows or Linux are good options for developing apps.  Cuda seems to have excellent support for Linux.  We selected Ubuntu 18.04 for the ease of installation of the different modules and components, and has plenty of documentation. We are biased, so please make sure you have understood all the benefits and drawbacks. For instance, at the moment, Gpu dockers can only be run over Linux. There are also options to run remote debugging over ssh, among other benefits. If you are using a mac, don&rsquo;t upgrade to the latest OSX, since it will not work.</p>
+<p>To summarize, if you plan to use Cuda, OSX is not the best OS to work. If you want to be independent of a platform, OpenCL cand be a better option, even though learning resources are scarce and outdated. I don&rsquo;t recommend to buy a GPU card and look at what compute capability has. Price can vary from a few hundred euros to some thousand euros. It is possible to obtain an NVidia 6.1 Gpu capability for a couple of hundred euros. However, If you are just interested in playing around with Cuda, probably an AWS ec2 instance will suffice. <a href="https://aws.amazon.com/ec2/instance-types/p2/">https://aws.amazon.com/ec2/instance-types/p2/</a>.  I recommend this course to learn the basics of Cuda programming is not expensive, and you do not require any specific hardware. <a href="https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about">https://courses.nvidia.com/courses/course-v1:DLI+A-AC-00+V1/about</a>.</p>
+<h2 id="efficieny-and-performance">Efficieny and performance</h2>
+<p>Having Software running that meets customer expectations is already a great achievement. Now having it running 360 days a year with near 99%  availability is something else.  For such reason, software performance engineers ensure that the applications provide the agreed performance between software providers and consumers, or Service Level Agreements (SLA). An essential reality is that performance is not just about getting faster responses, performance engineers should focus mainly on:</p>
+<ul>
+<li>Verify the system behavior on heavy loads or for extended periods before it actually fails.</li>
+<li>Inform how efficiently we are using our resources</li>
+<li>Know how fast we are answering our customer&rsquo;s requests</li>
+<li>Enable us to predict and design our systems for future growth</li>
+</ul>
+<p>How do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?.</p>
+<p>But why do we care about performance if we can just run 1000 cloud servers and get a faster response time? Well, why not a million? Or duplicate RAM memory and/or CPU cores, what about using a GPGPU.
+The answer is the efficiency of our systems. We want to use less amount of hardware for less amount of money to provide the best user experience when using our systems.</p>
+<p>A system most of the time is a complex network of artifacts created by many people, not only software developers but product owners, DevOps, database developers, frameworks used, etc. Each contribution adds complexity that increases the run time execution.</p>
+<p>So how do I know my software is efficient and performant? How should it be measured? There is a myriad of tools to measure performance and KPIs, so where to start?.  First I think it is interesting to have some concepts clear:</p>
+<h3 id="wall-clock-time">Wall clock time</h3>
+<p>Is a simple concept to measure how long a process takes and compared with another or with the same with changes, however this is a process that can take too much time when looking to improve a complex system that you know little about.</p>
+<h3 id="event-tracing">Event Tracing</h3>
+<p>Allows reading events generated by the kernel of the OS.  There are two core frameworks used for debugging or analyzing latencies and performance issues that take place outside of user-space (<a href="https://www.kernel.org/doc/html/v4.18/trace/ftrace.html),">https://www.kernel.org/doc/html/v4.18/trace/ftrace.html),</a>  ETW for windows and ftrace for Linux.</p>
+<h3 id="benchmarking">Benchmarking</h3>
+<p>Uses academy and industry frameworks to allow to compare metric rankings between different hardware systems independently. Both the High-Performance LINPACK (HPL) and the HPCG Benchmark projects complement each other to give both produces and consumers of high-performance hardware to identify the strengths and weaknesses of the several possible different configurations.</p>
+<h3 id="profiling">Profiling</h3>
+<p>Helps through several tools and approaches to understand how the written code of an application is used and executed. Most of the time this is used to find bottlenecks but can be used also to improve code quality and maintainability.</p>
+<h3 id="performance-counters">Performance Counters</h3>
+<p>It is a concept similar to event tracing, however, the performance counters have two benefits, they can be defined by the developer and can be applied to production systems without access to the source code of the application.</p>
+<p>Furthermore, there are three interesting methodologies the USE Created by Brendan Gregg, RED and the Four golden signals from google. These methodologies provide a series of checklist that allows engineers to identify performance issues.</p>
+<h2 id="use-case">Use Case</h2>
+<p>We have compared a CPU and a GPU Implementation of a motion detection algorithm using OpenCV Using Google benchmark. It is quite easy to use for C++ and has clear documentation.</p>
+<h3 id="dependencies">Dependencies:</h3>
+<p>Opencv with contrib plugin</p>
+<ul>
+<li><a href="https://github.com/opencv/opencv.git">https://github.com/opencv/opencv.git</a></li>
+<li><a href="https://github.com/opencv/opencv_contrib.git">https://github.com/opencv/opencv_contrib.git</a></li>
+<li><a href="https://github.com/google/benchmark">https://github.com/google/benchmark</a></li>
+<li>Cuda 10.2</li>
+<li>Cmake 3.16</li>
+</ul>
+<h3 id="results">Results</h3>
+<h3 id="wall-time">Wall Time</h3>
+<p>Using Nvprof you can find that the GPU usage exceeds the time to copy the image(almost 3%) to the GPU.</p>
+<p>The benchmark results give a small improvement in the time to process 100 frames. However, since half the CPU time is used, we are giving time for the CPU to run other tasks.</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Time</th>
+<th>CPU Time</th>
+<th>Iterations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Motion Detection</td>
+<td>11042573535 ns</td>
+<td>1016352801 ns</td>
+<td>10</td>
+</tr>
+<tr>
+<td>GPU Motion Detection</td>
+<td>10 10501045308 ns</td>
+<td>481241482 ns</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://advt3.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://advt3.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153698250-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

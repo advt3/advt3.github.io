@@ -48,13 +48,12 @@
     </item>
     
     <item>
-      <title>Getting started with accelerated computing</title>
-      <link>https://advt3.com/posts/getting_started/</link>
-      <pubDate>Sun, 08 Dec 2019 11:55:27 +0100</pubDate>
+      <title>Accelerated Computing</title>
+      <link>https://advt3.com/posts/performanceapplications/</link>
+      <pubDate>Sat, 30 Nov 2019 22:51:04 +0100</pubDate>
       
-      <guid>https://advt3.com/posts/getting_started/</guid>
-      <description>Happy Learning!
-Writen by: Santiago Hurtado</description>
+      <guid>https://advt3.com/posts/performanceapplications/</guid>
+      <description>Nowadays, resource-intensive tasks are necessary for a variety of areas such as image, signal processing, IoT, or Machine learning. Executing such tasks efficiently (watts per flops) has become a priority, not only for edge computing but also for data centers.</description>
     </item>
     
   </channel>
