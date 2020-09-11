@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Santiago Hurtado </title>
+    <title> Santiago Hurtado | Advanced Line Detection </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="Embedded Linux Software Engineer">
     
@@ -10,15 +10,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://advt3.comapple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
-    <link rel="canonical" href="https://advt3.com/projects/">
+    <link rel="canonical" href="https://advt3.com/posts/advanced_lane_detection/">
     
     
     <script type="text/javascript" src="https://advt3.com/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Current Projects Tekio Platform Lingen, Germany
-Accelerated Internet of things platform with distributed processing and machine learning usage
- CUDA Research and its usage of OpenCV Distributed processing at the Edge  Technology stack : MQTT, Dockers, Cuda, OpenCV, Tensorflow, Python and C&#43;&#43;"/>
+<meta name="twitter:title" content="Advanced Line Detection"/>
+<meta name="twitter:description" content="A classical computer vision approach
+Self-driving vehicles will make mobility safer and faster. They for example can help increase accessibility to people that can&rsquo;t drive for different reasons."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -95,86 +94,39 @@ Accelerated Internet of things platform with distributed processing and machine 
     <div class="post-content">
 
       <div class="post-title">
-        <h3>
+        <h3>Advanced Line Detection
         </h3>
         
         </div>
 
-    <h1 id="current-projects">Current Projects</h1>
-<h2 id="tekio-platform">Tekio Platform</h2>
-<p><em>Lingen, Germany</em></p>
-<p>Accelerated Internet of things platform with distributed processing and machine learning usage</p>
+    <p>A classical computer vision approach</p>
+<p>Self-driving vehicles will make mobility safer and faster. They for example can help increase accessibility to people that can&rsquo;t drive for different reasons. Though, there are a large number of challenges than need to be tackle before can be a reality. Several applications have been implemented for Advanced Driver Assistance Systems(ADAS) to improve road safety on modern vehicles such as Forward Collision Warning, Parking assistance, Lane Centering among many others.</p>
+<p><img src="/img/ouput.gif" alt="result"></p>
+<p><a href="https://youtu.be/7CRFFe4ijeI">Complete Video</a></p>
+<p>In this article, we will present a bird’s eye view implementation for lane detection. The strategy develops the following pipeline:</p>
 <ul>
-<li>CUDA Research and its usage of OpenCV</li>
-<li>Distributed processing at the Edge</li>
+<li>Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.</li>
+<li>Apply a distortion correction to raw images.</li>
+<li>Use color transforms and, gradients, to create a threshold binary image.</li>
+<li>Apply a perspective transform to rectify binary image (&ldquo;birds-eye view&rdquo;).</li>
+<li>Detect lane pixels and fit to find the lane boundary.</li>
+<li>Determine the curvature of the lane and vehicle position with respect to the center.</li>
+<li>Warp the detected lane boundaries back onto the original image.</li>
+<li>Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.</li>
 </ul>
-<p><em>Technology stack :</em> MQTT, Dockers, Cuda, OpenCV, Tensorflow, Python and C++</p>
-<p><em>Keywords :</em> #ComputerVision #HighPerformance #EmbbededLinuxSoftware</p>
-<hr>
-<h2 id="emat-flowmeter-middleware">Emat Flowmeter Middleware</h2>
-<p><em>Lingen, Germany</em></p>
-<p>Research and development of specialized efficient applications at the edge to be deployed in tough environments</p>
-<ul>
-<li>Design and implement an edge analysis platform</li>
-<li>Benchmark hardware system for power, heath and performance on the field</li>
-<li>Provide a robust solution for data transfer of a worldwide distributed system for oil and gas applications</li>
-</ul>
-<p><em>Technology stack :</em> Linux, Dockers, Python, Azure IoT,Intel VTune and Yocto.</p>
-<p><em>Keywords:</em> #HighPerformance #EmbbededLinuxSoftware #Cloud</p>
-<hr>
-<h1 id="earlier-projects">Earlier Projects</h1>
-<h2 id="nima">NIMA</h2>
-<p><em>Lingen, Germany</em></p>
-<p>Driving design and product discovery of different data processing platforms on Python, C++ and C#, SQL database servers and Esri Technologies included Geospatial data.</p>
-<ul>
-<li>Design, prototype and implement a reliable and scalable pipe data analysis platform deployed around the world including performance computing components</li>
-<li>Lead architect for the project designing and technical debt analysis</li>
-<li>Prototype development for technical decisions</li>
-<li>Performance Analysis for software developed</li>
-</ul>
-<p><em>Technology stack:</em> Windows, Linux, Dockers, Apache Mesos, Intel VTune, C#, C++, MS-SQL, Esri platform, Python.</p>
-<p><em>Keywords:</em> #GeospatialAnalysis #HighPerformance #Cloud</p>
-<hr>
-<h2 id="tekio-self-adaptive-middleware">Tekio Self-adaptive Middleware</h2>
-<p><em>Sophia Antipolis, France</em>
-A self-adaptive middleware platform to dynamically compose legacy software behavior of Computer Vision Algorithms.</p>
-<ul>
-<li>Developed as a master thesis with the highest grade achieved (5.0)</li>
-<li>Published on ARM &lsquo;11: Adaptive and Reflective Middleware on Proceedings of the International Workshop</li>
-<li>Design and implement the self-adaptive layer and validate has negligible effects on the performance of the system</li>
-</ul>
-<p><em>Technology stack</em>:
-Eclipse, Linux, OpenCV, Java, C++, OSGi, Visual VM.</p>
-<p><em>Keywords:</em>
-#ComputerVision #SoftwareArchictecture #Performance</p>
-<hr>
-<h2 id="miaguila">MiAguila</h2>
-<p><em>Medellin,Colombia</em></p>
-<p>Car-sharing platform software development.</p>
-<ul>
-<li>Develop Prototypes of native mobile apps for Android and iOS for a taxi app with a JEE backend</li>
-<li>Assemble and Lead an international software team for the product development of the car sharing app of Mi Aguila</li>
-</ul>
-<p><em>Technology stack :</em> Java EE, PostgreSQL, Linux, AWS, iOS, Android, VisualVM XCode, Hyperic Sigar.</p>
-<p><em>Keywords:</em> #GeospatialAnalysis #Navigation</p>
-<hr>
-<h2 id="performance-analysis">Performance Analysis</h2>
-<p><em>Bogota, Colombia</em></p>
-<p>Performance analysis of different cloud platforms</p>
-<ul>
-<li>NIMA and Processing platform for signal analysis</li>
-<li>Sonria Web Application</li>
-<li>TCC deliveries Web Application</li>
-<li>Model-driven Simulation Games Development for the Software development team at Uniandes</li>
-</ul>
-<p><em>Technology stack</em>: Java EE, PostgreSQL, Linux, AWS, VisualVM, Eclipse, Hyperic Sigar.</p>
-<p><em>Keywords:</em> #Performance #Reporting #EnterpriseApplications**</p>
-<hr>
-<h2 id="mobile-app-of-the-metro-de-medellin">Mobile app of the Metro de Medellin</h2>
-<p><em>Medellin, Colombia</em></p>
-<p>Lead a rapid development of the metro app including the route planner.</p>
-<p><em>Technology stack</em>: Android, iOS, Eclipse, XCode</p>
-<p><em>Keywords:</em> #MobileApps #Navigation</p>
+<p>You can find a thorough description here on the detail description. To know what was expected to be accomplished on the project you can review the rubric points.</p>
+<p>The Pipeline description shows how the pipeline is used, and the video pipeline runs the pipeline on a video stream. To see the implementation of the algorithms look in the utility folder. Finally, the unit tests and integration tests are located on the tests folder.</p>
+<p>The complete code can be found on the <a href="https://github.com/hurtadosanti/AdvancedLaneDetection">Github repository</a>.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>The approach used in this project requires several steps to process an image warp to bird view and back.
+Which makes it computationally expensive.</p>
+<p>Even though we have improved a lot since the basic approach to detect lines, there are many variables that make the algorithm unstable, on conditions such as rain or low or no lines on the street.</p>
+<p>An option is to have a set of algorithms to test the external context. Also, a good option is to include sensors such as light(day/night) raining, etc to help to select the proper algorithm to be used in different contextual situations.</p>
+<p>On the performance side, will be good to profile the code and see if the usage of a GPU or C++ code can improve the performance.</p>
+<p>There is still a place to improve the detection of problematic zones since the sliding windows are calculated only In the first frame of the video, an option is to detect problematic polylines and try to find again the sliding windows.</p>
+<h2 id="references">References</h2>
+<p><a href="https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013">https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013</a></p>
+<p><a href="https://link.springer.com/article/10.1007/s11042-016-4184-6">https://link.springer.com/article/10.1007/s11042-016-4184-6</a></p>
 
     </div>
     <div class="post-footer">
