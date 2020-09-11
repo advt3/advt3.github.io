@@ -102,14 +102,30 @@
 <p>Self-driving vehicles will make mobility safer and faster. They for example can help increase accessibility to people that can&rsquo;t drive for different reasons. Though, there are a large number of challenges than need to be tackle before can be a reality. Several applications have been implemented for Advanced Driver Assistance Systems(ADAS) to improve road safety on modern vehicles such as Forward ´Collision Warning´, ´Parking Assistance´, ´Lane Centering´ among many others.</p>
 <p>In this article, we will present a classical computer vision approach, bird’s eye view implementation for lane detection. The strategy develops the following pipeline:</p>
 <ul>
-<li>Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.</li>
-<li>Apply a distortion correction to raw images.</li>
-<li>Use color transforms and, gradients, to create a threshold binary image.</li>
-<li>Apply a perspective transform to rectify binary image (&ldquo;birds-eye view&rdquo;).</li>
-<li>Detect lane pixels and fit to find the lane boundary.</li>
-<li>Determine the curvature of the lane and vehicle position with respect to the center.</li>
-<li>Warp the detected lane boundaries back onto the original image.</li>
-<li>Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.</li>
+<li>
+<p>Compute the camera calibration matrix and distortion coefficients given a set of chessboard images</p>
+</li>
+<li>
+<p>Apply a distortion correction to raw images</p>
+</li>
+<li>
+<p>Use color transforms and, gradients, to create a threshold binary image</p>
+</li>
+<li>
+<p>Apply a perspective transform to rectify binary image (&ldquo;birds-eye view&rdquo;)</p>
+</li>
+<li>
+<p>Detect lane pixels and fit to find the lane boundary</p>
+</li>
+<li>
+<p>Determine the curvature of the lane and vehicle position with respect to the center</p>
+</li>
+<li>
+<p>Warp the detected lane boundaries back onto the original image</p>
+</li>
+<li>
+<p>Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position</p>
+</li>
 </ul>
 <p>You can find a thorough description <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/detail_description.md">here</a>. To know what was expected to be accomplished on the project you can review the <a href="https://review.udacity.com/#!/rubrics/571/view">rubric points</a>.</p>
 <p><img src="/img/advanced-lane-detection.gif" alt="lane detection animation"></p>
