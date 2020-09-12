@@ -98,17 +98,17 @@
         
         </div>
 
-    <p>Following our <a href="https://advt3.com/posts/development_environment/">Essential environment setup</a>, We implement our first C++ and Cuda <a href="https://github.com/advt3/tekio/blob/master/parallel_math/">application modules</a>. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</p>
+    <p>Following our <a href="https://advt3.com/posts/development_environment/">Essential environment setup</a>, We implement our first C++ and Cuda <a href="https://github.com/advt3/ParallelProgramming/tree/master/parallel_math/">application modules</a>. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</p>
 <p><strong>Writen by: Santiago Hurtado</strong></p>
 <p><img src="/img/construction.jpg" alt="Building">
-The explanations come with working code, so we describe only the key sections. We encourage you to get the code an play around. If any questions arise please don&rsquo;t hesitate to contact us by dm on <a href="https://twitter.com/advt3k">Twitter</a>.</p>
+The explanations come with working code, so we describe only the key sections. We encourage you to get the code an play around. If any questions arise please don&rsquo;t hesitate to contact us by dm on <a href="https://twitter.com/wakesanti">Twitter</a>.</p>
 <p>Building C/C++ Applications with CMake is one of the most widely used approaches, we decide to build this prototype using it for better reproducibility.
 <img src="/img/cmake.png" alt="CMake">
 Our system consists of three implementations: Serial, Multicore and Parallel, it also includes python interfaces and unit tests. The design at the moment supports the compilation
 of most of the modules separately, however makes the compilation take longer.</p>
 <h2 id="building-with-cmake">Building with CMake</h2>
 <h3 id="main-cmake">Main CMake</h3>
-<p>On the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/CMakeLists.txt">main Cmake</a> we use the include directory to have the common headers:</p>
+<p>On the <a href="https://github.com/advt3/ParallelProgramming/tree/master/parallel_math/CMakeLists.txt">main Cmake</a> we use the include directory to have the common headers:</p>
 <pre><code>    include_directories(. include)
 </code></pre>
 <p>We also define the dependency on CUDA and C++ 14, since it is what Cuda supports at the moment.</p>
@@ -119,18 +119,18 @@ of most of the modules separately, however makes the compilation take longer.</p
 <pre><code>    enable_testing()
 </code></pre>
 <h3 id="serial-cmake">Serial CMake</h3>
-<p>The next step is to have our <a href="https://github.com/advt3/tekio/blob/master/parallel_math/serial/CMakeLists.txt">serial CMake</a> working. For this the key line needed for Boost Python to <a href="https://stackoverflow.com/questions/57885017/how-to-fix-can-not-be-used-when-making-a-shared-object-recompile-with-fpic?noredirect=1#comment102196594_57885017">work</a> is:</p>
+<p>The next step is to have our serial implementation working. For this the key line needed for Boost Python to <a href="https://stackoverflow.com/questions/57885017/how-to-fix-can-not-be-used-when-making-a-shared-object-recompile-with-fpic?noredirect=1#comment102196594_57885017">work</a> is:</p>
 <pre><code>    option(BUILD_SHARED_LIBS &quot;Build libraries as shared as opposed to static&quot; ON)
 </code></pre>
 <h3 id="multicore-cmake">Multicore CMake</h3>
-<p>To have multithread support on the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/multicore/CMakeLists.txt">multicore CMake</a> we use Boost Threads library.</p>
+<p>To have multithread support on the multicore implementation we use Boost Threads library.</p>
 <pre><code>    find_package(Boost 1.70.0 COMPONENTS thread REQUIRED)
 </code></pre>
 <p>And also we have the same line to build shared libs.</p>
 <pre><code>    option(BUILD_SHARED_LIBS &quot;Build libraries as shared as opposed to static&quot; ON)
 </code></pre>
 <h3 id="parallel-cmake">Parallel CMake</h3>
-<p>For <a href="https://github.com/advt3/tekio/blob/master/parallel_math/parallel/CMakeLists.txt">Cuda support using CMake</a> we set the project as Cuda and allow the separated compilation.</p>
+<p>For Cuda support using CMake we set the project as Cuda and allow the separated compilation.</p>
 <pre><code>    find_package(CUDA REQUIRED)
     project(parallel_math_lib CUDA)
     set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
@@ -144,7 +144,7 @@ of most of the modules separately, however makes the compilation take longer.</p
 </li>
 </ul>
 <h3 id="python-cmake">Python CMake</h3>
-<p>Having the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/CMakeLists.txt">compilation of Boost Python with CMake</a> code working proved to be tricky. It requires to have libraries with the proper versions specified, found by the Boost Python build, and after by CMake. On the docker build <a href="https://advt3.com/posts/essential_environment/">Essential environment setup</a> is presented how to build Boost with support for python 3.6.</p>
+<p>Having the compilation of Boost Python with CMakecode working proved to be tricky. It requires to have libraries with the proper versions specified, found by the Boost Python build, and after by CMake. On the docker build <a href="https://advt3.com/posts/development_environment/">Essential environment setup</a> is presented how to build Boost with support for python 3.6.</p>
 <pre><code>    find_package(Boost 1.70.0 COMPONENTS thread python REQUIRED)
     find_package(PythonInterp 3.6 REQUIRED)
     find_package(PythonLibs 3.6 REQUIRED)
@@ -157,7 +157,7 @@ of most of the modules separately, however makes the compilation take longer.</p
 </code></pre>
 </li>
 <li>
-<p>The lib name has to match the module on the C++ <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/multicore_math.cpp">Code</a></p>
+<p>The lib name has to match the module on the <a href="https://github.com/advt3/ParallelProgramming/tree/master/parallel_math/src/python">C++ Code</a></p>
 <pre><code>  BOOST_PYTHON_MODULE (serial_math){ 
           };
 </code></pre>
@@ -174,13 +174,13 @@ of most of the modules separately, however makes the compilation take longer.</p
 </code></pre>
 </li>
 <li>
-<p>For python you need to append the path, a easy option is inside the python <a href="https://github.com/advt3/tekio/blob/master/parallel_math/python/tests/multicore_test.py">code</a></p>
+<p>For python you need to append the path, a easy option is inside the <a href="https://github.com/advt3/ParallelProgramming/blob/master/parallel_math/tests/multithread_math_test.py">python code</a></p>
 <pre><code>  sys.path.append(os.getenv('MATH_MODULE_PATH'))
 </code></pre>
 </li>
 </ul>
 <h3 id="unit-testing-build">Unit Testing Build</h3>
-<p>Lastly to have the <a href="https://github.com/advt3/tekio/blob/master/parallel_math/tests/CMakeLists.txt">unit test running on CMake</a> we need to have install gtest, there are recipes that can install the gtest as well, but we try to keep it simple.</p>
+<p>Lastly to have the <a href="https://github.com/advt3/ParallelProgramming/blob/master/parallel_math/CMakeLists.txt">unit test running on CMake</a> we need to have install gtest, there are recipes that can install the gtest as well, but we try to keep it simple.</p>
 <ul>
 <li>
 <p>We need support for C++(gcc) and Cuda(nvcc)</p>
