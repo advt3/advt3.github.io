@@ -100,7 +100,7 @@
 
     <p><img src="/img/advanced-lane-detection.jpg" alt="lane detection"></p>
 <p>Self-driving vehicles will make mobility safer and faster. They for example can help increase accessibility to people that can&rsquo;t drive for different reasons. Though, there are a large number of challenges than need to be tackle before can be a reality. Several applications have been implemented for Advanced Driver Assistance Systems(ADAS) to improve road safety on modern vehicles such as <em>Forward Collision Warning</em>, <em>Parking Assistance</em>, <em>Lane Centering</em> among many others.</p>
-<p>In this article, we will present a classical computer vision approach, bird’s eye view implementation for lane detection. The strategy develops the following pipeline:</p>
+<p>In this article, we present a classical computer vision approach, <em>bird’s eye view implementation for lane detection</em>. The developed strategy is as follows:</p>
 <ul>
 <li>
 <p>Compute the camera calibration matrix and distortion coefficients given a set of chessboard images</p>
@@ -109,7 +109,7 @@
 <p>Apply a distortion correction to raw images</p>
 </li>
 <li>
-<p>Use color transforms and, gradients, to create a threshold binary image</p>
+<p>Use color transforms, and gradients to create a threshold binary image</p>
 </li>
 <li>
 <p>Apply a perspective transform to rectify binary image (&ldquo;birds-eye view&rdquo;)</p>
@@ -127,7 +127,7 @@
 <p>Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position</p>
 </li>
 </ul>
-<p>You can find a thorough description <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/detail_description.md">here</a>. To know what was expected to be accomplished on the project you can review the <a href="https://review.udacity.com/#!/rubrics/571/view">rubric points</a>.</p>
+<p>You can find a thorough description <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/detail_description.md">here</a>. To know what was expected to be accomplished here are the <a href="https://review.udacity.com/#!/rubrics/571/view">rubric points</a>.</p>
 <p><img src="/img/advanced-lane-detection.gif" alt="lane detection animation"></p>
 <p><a href="https://youtu.be/7CRFFe4ijeI">Complete Video</a></p>
 <p>The <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/Pipeline.ipynb">pipeline description</a> shows how the algorithms are used, and the <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/VideoPipeline.py">video pipeline</a> processes a video stream. To see the details of the algorithms used look in the <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/utilities">utility folder</a>. Finally, the unit tests and integration tests are located on the <a href="https://github.com/hurtadosanti/AdvancedLaneDetection/blob/master/tests">tests folder</a>.</p>
