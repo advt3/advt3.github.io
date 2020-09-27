@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://advt3.com/posts/advanced_lane_detection/</loc>
-    <lastmod>2020-09-10T21:13:38+02:00</lastmod>
+    <loc>https://advt3.com/posts/</loc>
+    <lastmod>2020-09-27T18:07:41+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://advt3.com/posts/</loc>
+    <loc>https://advt3.com/posts/traffic_sign_classifier/</loc>
+    <lastmod>2020-09-27T18:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://advt3.com/posts/advanced_lane_detection/</loc>
     <lastmod>2020-09-10T21:13:38+02:00</lastmod>
   </url>
   

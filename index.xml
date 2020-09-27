@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Traffic sign classifier</title>
+      <link>https://advt3.com/posts/traffic_sign_classifier/</link>
+      <pubDate>Sun, 27 Sep 2020 18:07:41 +0200</pubDate>
+      
+      <guid>https://advt3.com/posts/traffic_sign_classifier/</guid>
+      <description>Building a Traffic Sign Recognition Convolutional Neural Network
+
+Nowadays, deep neural network applications can be found everywhere, from chatbots, finance, and shopping.</description>
+    </item>
+    
+    <item>
       <title>Advanced Lane Detection</title>
       <link>https://advt3.com/posts/advanced_lane_detection/</link>
       <pubDate>Thu, 10 Sep 2020 21:13:38 +0200</pubDate>
@@ -26,7 +37,7 @@
       <pubDate>Thu, 27 Aug 2020 11:47:02 +0200</pubDate>
       
       <guid>https://advt3.com/posts/findinglanelines/</guid>
-      <description>Introduction This is the first project for the @udacity Nano degree in self-driving car. The goals of this project is to Make a pipeline that finds lane lines on the road.</description>
+      <description>This is the first project for the @udacity Nano degree in self-driving car. The goals of this project is to Make a pipeline that finds lane lines on the road.</description>
     </item>
     
     <item>
