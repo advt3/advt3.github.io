@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Behavioral Cloning</title>
+      <link>https://advt3.com/posts/behavioral_cloning/</link>
+      <pubDate>Sat, 10 Oct 2020 19:09:14 +0200</pubDate>
+      
+      <guid>https://advt3.com/posts/behavioral_cloning/</guid>
+      <description>Behavioral cloning is a method to capture and reproduce human skills in a computer program.
+In this post we develop and reproduce the PiloNet learning system for self-driving cars developed by Nvidia.</description>
+    </item>
+    
+    <item>
       <title>Traffic sign classifier</title>
       <link>https://advt3.com/posts/traffic_sign_classifier/</link>
       <pubDate>Sun, 27 Sep 2020 18:07:41 +0200</pubDate>
