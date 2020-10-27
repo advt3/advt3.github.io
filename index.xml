@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Extended Kalman Filter</title>
+      <link>https://advt3.com/posts/extended_kalman_filter/</link>
+      <pubDate>Tue, 27 Oct 2020 22:09:12 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/extended_kalman_filter/</guid>
+      <description>Object tracking is a problem that requires complex math formulas and high computing resources. There are several applications not only military but also today in autonomous vehicles, to for instance avoid collisions.</description>
+    </item>
+    
+    <item>
       <title>Behavioral Cloning</title>
       <link>https://advt3.com/posts/behavioral_cloning/</link>
       <pubDate>Sat, 10 Oct 2020 19:09:14 +0200</pubDate>

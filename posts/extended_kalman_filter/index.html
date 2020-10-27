@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Santiago Hurtado | Traffic sign classifier </title>
+    <title> Santiago Hurtado | Extended Kalman Filter </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
 
-    <link rel="canonical" href="https://advt3.com/posts/traffic_sign_classifier/">
+    <link rel="canonical" href="https://advt3.com/posts/extended_kalman_filter/">
 
     
     
@@ -32,10 +32,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Traffic sign classifier"/>
-<meta name="twitter:description" content="Building a Traffic Sign Recognition Convolutional Neural Network
-
-Nowadays, deep neural network applications can be found everywhere, from chatbots, finance, and shopping."/>
+<meta name="twitter:title" content="Extended Kalman Filter"/>
+<meta name="twitter:description" content="Object tracking is a problem that requires complex math formulas and high computing resources. There are several applications not only military but also today in autonomous vehicles, to for instance avoid collisions."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -122,30 +120,19 @@ Nowadays, deep neural network applications can be found everywhere, from chatbot
         <div class="post-content">
 
             <div class="post-title">
-                <h3>Traffic sign classifier</h3>
+                <h3>Extended Kalman Filter</h3>
                 
             </div>
 
-            <p><strong>Building a Traffic Sign Recognition Convolutional Neural Network</strong></p>
-<p><img src="/img/traffic-sign-3008267_640.jpg" alt="speed limit"></p>
-<p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
-<p>Nowadays, deep neural network applications can be found everywhere, from chatbots, finance, and shopping. An interesting field of use is self-driving vehicles, where they are not only used on object recognition but also on vehicle steering. i.e <em><a href="https://developer.nvidia.com/blog/explaining-deep-learning-self-driving-car/">Explaining How End-to-End Deep Learning Steers a Self-Driving Car</a></em>. Furthermore, convolutional neural networks help using neural networks on different sets of images, most usually for object classification. A classical example dates from 1998 <em>Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner:  <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf">Gradient-Based Learning Applied to Document Recognition</a>,  Proceedings of the IEEE, 86(11):2278-2324, November 1998.</em>  Where it was demonstrated that training a machine rather than being explicitly program to do a task, using for instance classical computer vision approaches, was possible.</p>
-<p>We have implemented a variation of LeNet-5 network from <em>Pierre Sermanet and Yann LeCun: <a href="http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf">Traffic Sign Recognition with Multi-Scale Convolutional Networks</a>, Proceedings of International Joint Conference on Neural Networks (IJCNN&rsquo;11), 2011</em>. Using TensorFlow 1.x we implemented a variation, and we accomplished an accuracy of 95%. Even though the implementation is not as robust and accurate as the one proposed, it has been interesting to learn how to use TensorFlow without the usage of Keras, which is the standard today.</p>
-<h2 id="content">Content</h2>
-<p>The project includes detailed steps to:</p>
-<ul>
-<li>Load the data set</li>
-<li>Explore, summarize and visualize the data set</li>
-<li>Design, train, and test a model architecture</li>
-<li>Use the model to make predictions on new images</li>
-<li>Analyze the softmax probabilities of the new images</li>
-</ul>
-<p>The architecture selected is base on the Lenet-5 Network with 2 convolution layers followed by a max-pooling layer and 2 fully connected layers reduced to 43 outputs, to improve the accuracy we use a dropout operation before the fully connected layers.</p>
-<p><img src="/img/LeNet5.png" alt="LeNet-5"></p>
-<p>The detailed implementation of the <a href="https://github.com/hurtadosanti/TrafficSignClassifier/blob/master/TrafficSignClassifier.ipynb">Traffic Sign Classifier Notebook</a> and the <a href="https://github.com/hurtadosanti/TrafficSignClassifier/blob/master/Report.md">report</a> describes each step accomplished.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Convolutional neural networks have revolutionalized not only the area of computer vision but also Neuro-linguistic programming (NLP), and time series analysis among many other fields.</p>
-<p>For this project, we have begun using Tensorflow 1.x for a known simple network architecture LeNet-5. Wich requires to write several implementations details. Still, it is important for a practitioner to understand how convolutional neural networks are designed. What effects every parameter has into the results, which helps to understand in-depth the in&rsquo;s and out&rsquo;s.</p>
+            <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
+<p>Object tracking is a problem that requires complex math formulas and high computing resources. There are several applications not only military but also today in autonomous vehicles, to for instance avoid collisions. Autonomous vehicles use different sensors to understand their context, from different types of cameras, radars, and/or lasers. Sensor fusion merges multiple inputs and considers the strengths of each of the sensors.</p>
+<p><img src="road-4988448_640.jpg" alt="road"></p>
+<p><a href="https://pixabay.com/users/jcx516-2412606/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4988448%22">Image by 琛茜 蒋</a></p>
+<p>An algorithm used for sensor fusion is the Kalman filter <a href="https://doi.org/10.1109/ICACCT.2018.8529402">Ref: Moving Object Tracking Using Kalman Filter</a>, which is a recursive algorithm that helps solve the problem of tracking moving objects. Each iteration of the algorithm consists of two steps the update and measurement of the object position and velocity. The benefit is that it minimizes the root mean square error (RMSE) on each iteration.</p>
+<p>However, the Kalman filter can only be used on linear problems, such as the usage of Lidar sensors, to calculate the position of the tracked object. On the other hand, the Extended Kalman Filter can track objects with a non-linear sensor such as the Radar of a car, that can help calculate the velocity of the tracked object.
+<a href="https://doi.org/10.1109/ICASSP.2017.7952985">Ref: Extended Kalman filter for extended object tracking</a></p>
+<p><a href="https://github.com/hurtadosanti/ExtendedKalmanFilter">In this project</a>, we have implemented in C++ both algorithms and using the <a href="https://github.com/udacity/self-driving-car-sim/releases/">Udacity Simulator</a> to verify the implementation results.</p>
+<p>Implementing the Kalman filter in C++ over Python increases the complexity of the matrix calculations, but also increases the performance. Debugging using the Eigen library can be a daunting task, having implemented before on python helped to have a clear understanding of the algorithms and the expectations.  Using a docker image for the compilation together with Clion also makes the implementation and debugging faster and easier. As always is an interesting project with a direct application and visualization of the solution.</p>
 
         </div>
         <div class="post-footer">
