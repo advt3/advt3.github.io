@@ -126,7 +126,7 @@
 
             <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
 <p>Object tracking is a problem that requires complex math formulas and high computing resources. There are several applications not only military but also today in autonomous vehicles, to for instance avoid collisions. Autonomous vehicles use different sensors to understand their context, from different types of cameras, radars, and/or lasers. Sensor fusion merges multiple inputs and considers the strengths of each of the sensors.</p>
-<p><img src="road-4988448_640.jpg" alt="road"></p>
+<p><img src="/img/road-4988448_640.jpg" alt="road"></p>
 <p><a href="https://pixabay.com/users/jcx516-2412606/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4988448%22">Image by 琛茜 蒋</a></p>
 <p>An algorithm used for sensor fusion is the Kalman filter <a href="https://doi.org/10.1109/ICACCT.2018.8529402">Ref: Moving Object Tracking Using Kalman Filter</a>, which is a recursive algorithm that helps solve the problem of tracking moving objects. Each iteration of the algorithm consists of two steps the update and measurement of the object position and velocity. The benefit is that it minimizes the root mean square error (RMSE) on each iteration.</p>
 <p>However, the Kalman filter can only be used on linear problems, such as the usage of Lidar sensors, to calculate the position of the tracked object. On the other hand, the Extended Kalman Filter can track objects with a non-linear sensor such as the Radar of a car, that can help calculate the velocity of the tracked object.
