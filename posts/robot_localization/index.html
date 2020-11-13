@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Santiago Hurtado | Tags </title>
+    <title> Santiago Hurtado | Robot Localization </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,10 +19,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
 
-    <link rel="canonical" href="https://advt3.com/tags/">
+    <link rel="canonical" href="https://advt3.com/posts/robot_localization/">
 
     
-    <link rel="alternate" type="application/rss+xml" href="https://advt3.com/tags/index.xml" title="Santiago Hurtado | Embedded Linux Software Engineer" />
     
     
     
@@ -31,8 +30,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="Embedded Linux Software Engineer"/>
+<meta name="twitter:title" content="Robot Localization"/>
+<meta name="twitter:description" content="Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1]."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -115,11 +114,49 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    <div class="archive animated fadeInDown">
-        <ul class="list-with-title">
-            
-        </ul>
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Robot Localization</h3>
+                
+            </div>
+
+            <p>Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1].</p>
+<p><img src="/img/particles-5392771.jpg" alt="particles"></p>
+<p>Image by <!-- raw HTML omitted -->motionstock<!-- raw HTML omitted --> from <!-- raw HTML omitted -->Pixabay<!-- raw HTML omitted --></p>
+<p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise [2].</p>
+<p>In this project, we have implemented the Particle Filter to solve the localization problem.</p>
+<h2 id="solution">Solution</h2>
+<p>There are different approaches to solve these issues, based on Lidar, Radar, and/or Video, that support in providing the right accuracy. The drawback is that they require more computing resources on the vehicle. Most know methods use Bayesian filters, such as Kalman or Particle Filters [2].</p>
+<p><img src="/img/particle_filter.gif" alt="particles simulation"></p>
+<h3 id="algorithm">Algorithm</h3>
+<p>The particle filter algorithm occurs in four (4) steps:</p>
+<ol>
+<li>Initialize all the particles using GPS information, considering the noise</li>
+<li>Given the yaw rate, time change, and velocity predict the position of all particles</li>
+<li>Given the observed points and the map update the belief(weight) of all the particles with the landmarks close to our actual position</li>
+<li>Finally, resample giving the weight distribution of the particles</li>
+</ol>
+<p>In the following video, you can find a deep explanation of the algorithm <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">https://www.youtube.com/watch?v=lzN18y_z6HQ</a>.</p>
+<h2 id="implementation">Implementation</h2>
+<p><a href="https://github.com/hurtadosanti/ParticleFilterLocalization">Our implementation</a> receives a map of the vehicle information from the simulator and provides the best particle belief found. It is also supplied the ground truth to calculate the RMSE to be aware of the error from the calculations.</p>
+<p>Giving the math and probability calculation explanation we did implement the code to find a solution that worked on the simulator. It is a very good exercise to have implemented in C++ to understand some of the peculiarities that one has to consider for such problems.</p>
+<h2 id="references">References</h2>
+<p>[1] A Particle Filter Localization Method Using 2D Laser Sensor Measurements and Road Features for Autonomous Vehicle <a href="http://downloads.hindawi.com/journals/jat/2019/3680181.pdf">http://downloads.hindawi.com/journals/jat/2019/3680181.pdf</a></p>
+<p>[2] Robotic Autonomy course Carnegie Mellon, Chapter 5 <a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf</a></p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
     </div>
+
 
         </div>
     </div>

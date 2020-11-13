@@ -6,18 +6,18 @@
     <description>Recent content in Posts on Santiago Hurtado | Embedded Linux Software Engineer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2020 22:09:12 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2020 13:46:48 +0100</lastBuildDate>
     
 	<atom:link href="https://advt3.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Extended Kalman Filter</title>
-      <link>https://advt3.com/posts/extended_kalman_filter/</link>
-      <pubDate>Tue, 27 Oct 2020 22:09:12 +0100</pubDate>
+      <title>Robot Localization</title>
+      <link>https://advt3.com/posts/robot_localization/</link>
+      <pubDate>Fri, 13 Nov 2020 13:46:48 +0100</pubDate>
       
-      <guid>https://advt3.com/posts/extended_kalman_filter/</guid>
-      <description>Object tracking is a problem that requires complex math formulas and high computing resources. There are several applications not only in the military but also today in autonomous vehicles, for example, to avoid collisions.</description>
+      <guid>https://advt3.com/posts/robot_localization/</guid>
+      <description>Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1].</description>
     </item>
     
     <item>
