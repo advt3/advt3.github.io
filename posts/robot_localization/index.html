@@ -135,13 +135,13 @@
 <ol>
 <li>Initialize all the particles using GPS information, considering the noise</li>
 <li>Given the yaw rate, time change, and velocity predict the position of all particles</li>
-<li>Given the observed points and the map update the belief(weight) of all the particles with the landmarks close to our actual position</li>
-<li>Finally, resample giving the weight distribution of the particles</li>
+<li>Provided the observed points and the map update the belief(weight) of all the particles with the landmarks close to our actual position</li>
+<li>Finally, resample the weight distribution of the particles</li>
 </ol>
 <p>In the following <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">video</a>, you can find a deep explanation of the algorithm.</p>
 <h2 id="implementation">Implementation</h2>
 <p><a href="https://github.com/hurtadosanti/ParticleFilterLocalization">Our implementation</a> receives a map of the vehicle information from the simulator and provides the best particle belief found. It is also supplied the ground truth to calculate the RMSE to be aware of the error from the calculations.</p>
-<p>Giving the math and probability calculation explanation we did implement the code to find a solution that worked on the simulator. It is a very good exercise to have implemented in C++ to understand some of the peculiarities that one has to consider for such problems.</p>
+<p>Giving the math and probability calculation explanation, we did implement the code to find a solution that worked on the simulator. It is a very good exercise to have implemented in C++ to understand some of the peculiarities that one has when developing such solutions.</p>
 <h2 id="references">References</h2>
 <p>[1] A Particle Filter Localization Method Using 2D Laser Sensor Measurements and Road Features for Autonomous Vehicle <a href="http://downloads.hindawi.com/journals/jat/2019/3680181.pdf">http://downloads.hindawi.com/journals/jat/2019/3680181.pdf</a></p>
 <p>[2] Robotic Autonomy course Carnegie Mellon, Chapter 5 <a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf</a></p>
