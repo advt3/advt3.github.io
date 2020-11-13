@@ -31,7 +31,7 @@
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Robot Localization"/>
-<meta name="twitter:description" content="Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1]."/>
+<meta name="twitter:description" content="Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS). However, GPS accuracy for autonomous vehicles does not provide the right information at the right time."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -122,11 +122,9 @@
                 
             </div>
 
-            <p>Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1].</p>
+            <p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise [2]. Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control[1].</p>
 <p><img src="/img/abstract-5719221.jpg" alt="particles"></p>
-<p>Image by <!-- raw HTML omitted --><!-- raw HTML omitted --> from <!-- raw HTML omitted -->Pixabay<!-- raw HTML omitted --></p>
 <p>Image by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5719221">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5719221">Pixabay</a></p>
-<p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise [2].</p>
 <p>In this project, we have implemented the Particle Filter to solve the localization problem.</p>
 <h2 id="solution">Solution</h2>
 <p>There are different approaches to solve these issues, based on Lidar, Radar, and/or Video, that support in providing the right accuracy. The drawback is that they require more computing resources on the vehicle. Most know methods use Bayesian filters, such as Kalman or Particle Filters [2].</p>

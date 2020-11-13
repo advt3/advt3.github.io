@@ -17,7 +17,7 @@
       <pubDate>Fri, 13 Nov 2020 13:46:48 +0100</pubDate>
       
       <guid>https://advt3.com/posts/robot_localization/</guid>
-      <description>Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1].</description>
+      <description>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS). However, GPS accuracy for autonomous vehicles does not provide the right information at the right time.</description>
     </item>
     
     <item>
