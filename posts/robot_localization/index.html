@@ -124,13 +124,13 @@
                 
             </div>
 
-            <p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters of error, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise [2]. Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control[1].</p>
+            <p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters of error, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise<a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">[1]</a>. Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control<a href="http://downloads.hindawi.com/journals/jat/2019/3680181.pdf">[2]</a>.</p>
 <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
 <p><img src="/img/abstract-5719221_640.jpg" alt="particles"></p>
 <p>Image by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5719221">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5719221">Pixabay</a></p>
 <h2 id="solution">Solution</h2>
-<p>On this project, we have implemented the Particle Filter to solve the localization problem.</p>
-<p>There are different approaches to solve these issues, based on Lidar, Radar, and/or Video, that support in providing the right accuracy. The drawback is that they require more computing resources on the vehicle. Most know methods use Bayesian filters, such as Kalman or Particle Filters [2].</p>
+<p>On this project<a href="https://github.com/hurtadosanti/ParticleFilterLocalization">[3]</a>, we have implemented the Particle Filter to solve the localization problem.</p>
+<p>There are different approaches to solve these issues, based on Lidar, Radar, and/or Video, that support in providing the right accuracy. The drawback is that they require more computing resources on the vehicle. Most know methods use Bayesian filters, such as Kalman or Particle Filters<a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">[1]</a>.</p>
 <p><img src="/img/particle_filter.gif" alt="particles simulation"></p>
 <h3 id="algorithm">Algorithm</h3>
 <p>The particle filter algorithm occurs in four (4) steps:</p>
@@ -140,13 +140,15 @@
 <li>Provided the observed points and the map update the belief(weight) of all the particles with the landmarks close to our actual position</li>
 <li>Finally, resample the weight distribution of the particles</li>
 </ol>
-<p>In the following <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">video</a>, you can find a deep explanation of the algorithm.</p>
+<p>In the following <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">[4]</a>, you can find a deep explanation of the algorithm.</p>
 <h2 id="implementation">Implementation</h2>
-<p><a href="https://github.com/hurtadosanti/ParticleFilterLocalization">Our implementation</a> receives a map of the vehicle information from the simulator and provides the best particle belief found. It is also supplied the ground truth to calculate the RMSE to be aware of the error from the calculations.</p>
+<p>Our implementation<a href="https://github.com/hurtadosanti/ParticleFilterLocalization">[3]</a> receives a map of the vehicle information from the simulator and provides the best particle belief found. It is also supplied the ground truth to calculate the RMSE to be aware of the error from the calculations.</p>
 <p>Giving the math and probability calculation explanation, we did implement the code to find a solution that worked on the simulator. It is a very good exercise to have implemented in C++ to understand some of the peculiarities that one has when developing such solutions.</p>
 <h2 id="references">References</h2>
-<p>[1] A Particle Filter Localization Method Using 2D Laser Sensor Measurements and Road Features for Autonomous Vehicle <a href="http://downloads.hindawi.com/journals/jat/2019/3680181.pdf">http://downloads.hindawi.com/journals/jat/2019/3680181.pdf</a></p>
-<p>[2] Robotic Autonomy course Carnegie Mellon, Chapter 5 <a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf</a></p>
+<p>[1] Robotic Autonomy course Carnegie Mellon, Chapter 5 <a href="http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf">http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf</a></p>
+<p>[2] A Particle Filter Localization Method Using 2D Laser Sensor Measurements and Road Features for Autonomous Vehicle <a href="http://downloads.hindawi.com/journals/jat/2019/3680181.pdf">http://downloads.hindawi.com/journals/jat/2019/3680181.pdf</a></p>
+<p>[3] Particle Filter for localization Implementation <a href="https://github.com/hurtadosanti/ParticleFilterLocalization">https://github.com/hurtadosanti/ParticleFilterLocalization</a></p>
+<p>[4]Particle Filters Video <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">https://www.youtube.com/watch?v=lzN18y_z6HQ</a></p>
 
         </div>
         <div class="post-footer">
