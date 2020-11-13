@@ -124,7 +124,7 @@
 
             <p>Navigation for mobile robots requires to solve four challenges: Environmental perception, localization, path planning(cognition), and vehicle or motion control [1].</p>
 <p><img src="/img/particles-5392771.jpg" alt="particles"></p>
-<p>Image by <!-- raw HTML omitted -->motionstock<!-- raw HTML omitted --> from <!-- raw HTML omitted -->Pixabay<!-- raw HTML omitted --></p>
+<p>Image by <a href="https://pixabay.com/users/motionstock-13298494/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5392771">motionstock</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5392771">Pixabay</a></p>
 <p>Establishing a particular position in the world (Localization) is a problem solved by Global position systems (GPS).  However, GPS accuracy for autonomous vehicles does not provide the right information at the right time. The accuracy and response time are not sufficiently precise, the distance is given in meters not centimeters, as well as environmental and contextual conditions such as rain, clouds, or nearby buildings increase the noise [2].</p>
 <p>In this project, we have implemented the Particle Filter to solve the localization problem.</p>
 <h2 id="solution">Solution</h2>
@@ -138,7 +138,7 @@
 <li>Given the observed points and the map update the belief(weight) of all the particles with the landmarks close to our actual position</li>
 <li>Finally, resample giving the weight distribution of the particles</li>
 </ol>
-<p>In the following video, you can find a deep explanation of the algorithm <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">https://www.youtube.com/watch?v=lzN18y_z6HQ</a>.</p>
+<p>In the following <a href="https://www.youtube.com/watch?v=lzN18y_z6HQ">video</a>, you can find a deep explanation of the algorithm.</p>
 <h2 id="implementation">Implementation</h2>
 <p><a href="https://github.com/hurtadosanti/ParticleFilterLocalization">Our implementation</a> receives a map of the vehicle information from the simulator and provides the best particle belief found. It is also supplied the ground truth to calculate the RMSE to be aware of the error from the calculations.</p>
 <p>Giving the math and probability calculation explanation we did implement the code to find a solution that worked on the simulator. It is a very good exercise to have implemented in C++ to understand some of the peculiarities that one has to consider for such problems.</p>
