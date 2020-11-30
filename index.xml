@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Path Motion Planning for autonomous vehicles</title>
+      <link>https://advt3.com/posts/path_motion_planning/</link>
+      <pubDate>Mon, 30 Nov 2020 18:56:49 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/path_motion_planning/</guid>
+      <description>One of the primary purposes of a self-driving vehicle is to be able to arrive at a target location without human intervention.</description>
+    </item>
+    
+    <item>
       <title>Robot Localization</title>
       <link>https://advt3.com/posts/robot_localization/</link>
       <pubDate>Fri, 13 Nov 2020 13:46:48 +0100</pubDate>
