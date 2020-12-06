@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>PID Controller</title>
+      <link>https://advt3.com/posts/pid_controller/</link>
+      <pubDate>Sun, 06 Dec 2020 10:54:53 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/pid_controller/</guid>
+      <description>Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a signal input and computes the desired actuator output.</description>
+    </item>
+    
+    <item>
       <title>Path and Motion Planning for autonomous vehicles</title>
       <link>https://advt3.com/posts/path_motion_planning/</link>
       <pubDate>Mon, 30 Nov 2020 18:56:49 +0100</pubDate>

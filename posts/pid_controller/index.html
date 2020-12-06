@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Santiago Hurtado | Path and Motion Planning for autonomous vehicles </title>
+    <title> Santiago Hurtado | PID Controller </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
 
-    <link rel="canonical" href="https://advt3.com/posts/path_motion_planning/">
+    <link rel="canonical" href="https://advt3.com/posts/pid_controller/">
 
     
     
@@ -32,8 +32,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Path and Motion Planning for autonomous vehicles"/>
-<meta name="twitter:description" content="One of the primary purposes of a self-driving vehicle is to be able to arrive at a target location without human intervention."/>
+<meta name="twitter:title" content="PID Controller"/>
+<meta name="twitter:description" content="Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a signal input and computes the desired actuator output."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -120,63 +120,52 @@
         <div class="post-content">
 
             <div class="post-title">
-                <h3>Path and Motion Planning for autonomous vehicles</h3>
+                <h3>PID Controller</h3>
                 
             </div>
 
             <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
-<p>One of the primary purposes of a self-driving vehicle is to be able to arrive at a target location without human intervention. To accomplish this task, the vehicle must be able to figure out a route to arrive at the destination position (Path Planning) and must be able to navigate the obstacles (Motion Planning) to arrive safely at the intended location. For example, if the car wants to arrive at your home, it should first use the GPS and find the shortest route. From this time has been calculated it is required to get context information such as lanes and other vehicles to navigate safely to your house <a href="https://arxiv.org/pdf/1604.07446.pdf">[1]</a></p>
-<p><img src="/img/road-1209369_640.jpg" alt="road"></p>
-<p><em>Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1209369">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1209369">Pixabay</a></em></p>
-<p>In this project<a href="https://github.com/hurtadosanti/HighwayPathPlanning">[2]</a>, we have implemented a planner that allows the simulated vehicle to navigate through three lanes of a highway, avoiding: <strong>Collide with other cars, exceed speed, acceleration, and/or jerk, and maintaining the lane until is safe to maneuver</strong>.</p>
-<p><img src="/img/path_planning.gif" alt="simulator"></p>
-<h2 id="change-lanes">Change Lanes</h2>
-<p>The <a href="https://github.com/hurtadosanti/HighwayPathPlanning/blob/main/src/planner.cpp">planner::change_lanes</a>  method uses a state machine to decide what maneuver must be executed. Using the Frenet coordinate system the vehicle calculates a safe path to drive through traffic.</p>
-<ol>
+<p>Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a
+signal input and computes the desired actuator output. The PID includes into the feedback loop the present error(P), the
+memory o the past error(I) and the future (D) to reduce overshooting, and base on this values applies a correction.
+On this <strong><a href="https://github.com/hurtadosanti/PIDController">project</a></strong> we have implemented a PID controller in C++ to maneuver the vehicle around the simulator track.</p>
+<p>![drone](/img/mv florin-kozma&ndash;K2rf6hAB1s-unsplash.jpg)
+<em>Photo by [Florin Kozma](<a href="https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText">https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText</a> on <a href="https://unsplash.com/s/photos/controller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></em></p>
+<h2 id="implementation">Implementation</h2>
+<p>The implementation of the algorithm is quite straight forward. Every time we receive the error we stored on
+the variables and calculate the new value. We use two PID controllers one for the steering and one for the throttle
+control, each with its own initial constants. Given that on practice the integral error can get saturated we <em>clamped
+the saturation</em> to a max value, which provides us with smoother correction when the car started oscillating too much.</p>
+<p>The <a href="https://youtu.be/Tuj7dfj4P0c">Video</a> result shows how the car goes around the track.</p>
+<h2 id="parameter-tuning">Parameter Tuning</h2>
+<p>Even thought there are many algorithms that can do the parameter tuning we choose to it manually to understand them
+better. Tuning each parameter at a time by hand helps understanding how it works each of one of them. Even though the
+throttle control uses PID, tuning the parameters is not as evident as the steering control.</p>
+<p>The parameters correspond as follow for steering.</p>
+<ul>
 <li>
-<p>Uses sensor fusion to identify cars that are on the same lane, if a vehicle is detected on the same lane</p>
+<p>P constant value was setup to <em>0.05</em>. The value define how much correction is done. If the value is set to say 1,
+the car will continuously correct the direction making it oscillate heavily on a straight line.</p>
 </li>
 <li>
-<p>When a car is detected first checks that are possible to use the left lane to the overpass. It checks that there are no cars in front or behind within a safe distance(including acceleration)</p>
+<p>I constant value was set <em>0.001</em> with a max value of <em>200</em>. This value was set to 0 initially, and when the
+other two values <strong>P and D</strong> where set, with put a very small value that helps the car driver a bit smoother.</p>
 </li>
 <li>
-<p>After checks that is possible to use the right lane to the overpass. It checks that there are no cars in front or behind within a safe distance(including acceleration)</p>
+<p>D constant value was set to <em>3</em>. Finally the D value was set high since it helps turning on the curves harder.</p>
 </li>
-<li>
-<p>Finally, if a car is detected to be too close, the vehicle slows down, and when it is possible turns to the left or right lanes</p>
-</li>
-</ol>
-<h2 id="waypoint-planner">Waypoint Planner</h2>
-<p>The <a href="https://github.com/hurtadosanti/HighwayPathPlanning/blob/main/src/planner.cpp">planner::waypoint_planner</a> method verify when is safe to drive using the change_lanes method and drives using the map coordinates.</p>
-<ol>
-<li>
-<p>Gets the car position and map waypoints in S, X, Y</p>
-</li>
-<li>
-<p>Calculates the yaw</p>
-</li>
-<li>
-<p>Convert the frenet points into map coordinates</p>
-</li>
-<li>
-<p>Calculating with the actual lane, the next points required to navigate</p>
-</li>
-<li>
-<p>Transform to vehicle coordinates</p>
-</li>
-<li>
-<p>Smooths the navigation, yaw, and path using the spline library</p>
-</li>
-<li>
-<p>Finally converts back to the X, and Y coordinates to be pass to the vehicle control system</p>
-</li>
-</ol>
-<h2 id="conclusion">Conclusion</h2>
-<p>Throughout this project, we apply the knowledge gathered through multiple lessons and partial implementations of algorithms for breadth/depth-first search, Hybrid A*, naive algorithms, cost functions, and Jerk minimizing trajectories which are some of the basis of modern self-driving vehicles. However, much remains to be done to achieve a complete self-autonomy level 5.</p>
-<p>As with many of the projects before, I have enjoyed implementing the algorithms and understanding their part in the bigger picture.</p>
+</ul>
+<p>The parameters correspond as follow for throttle.</p>
+<ul>
+<li>P constant value was setup to <em>0.09</em></li>
+<li>I constant value was set <em>0.0001</em> with a max value of <em>500</em></li>
+<li>D constant value was set to <em>0.5</em></li>
+</ul>
 <h2 id="references">References</h2>
-<p>[1] A Survey of Motion Planning and ControlTechniques for Self-driving Urban Vehicles <a href="https://arxiv.org/pdf/1604.07446.pdf">https://arxiv.org/pdf/1604.07446.pdf</a></p>
-<p>[2] Highway Path Planning Implementation <a href="https://github.com/hurtadosanti/HighwayPathPlanning">https://github.com/hurtadosanti/HighwayPathPlanning</a></p>
+<p><a href="https://www.ni.com/en-us/innovations/white-papers/06/pid-theory-explained.html">https://www.ni.com/en-us/innovations/white-papers/06/pid-theory-explained.html</a></p>
+<p><a href="https://github.com/udacity/CarND-Controls-PID">https://github.com/udacity/CarND-Controls-PID</a></p>
+<p><a href="https://github.com/udacity/self-driving-car-sim/releases">https://github.com/udacity/self-driving-car-sim/releases</a></p>
+<p><a href="https://review.udacity.com/#!/rubrics/1972/view">https://review.udacity.com/#!/rubrics/1972/view</a></p>
 
         </div>
         <div class="post-footer">

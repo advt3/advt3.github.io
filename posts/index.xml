@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Santiago Hurtado | Embedded Linux Software Engineer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Nov 2020 18:56:49 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 06 Dec 2020 10:54:53 +0100</lastBuildDate>
     
 	<atom:link href="https://advt3.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PID Controller</title>
+      <link>https://advt3.com/posts/pid_controller/</link>
+      <pubDate>Sun, 06 Dec 2020 10:54:53 +0100</pubDate>
+      
+      <guid>https://advt3.com/posts/pid_controller/</guid>
+      <description>Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a signal input and computes the desired actuator output.</description>
+    </item>
     
     <item>
       <title>Path and Motion Planning for autonomous vehicles</title>

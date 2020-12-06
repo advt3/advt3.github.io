@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Santiago Hurtado | Path and Motion Planning for autonomous vehicles </title>
+    <title> Santiago Hurtado | Santiago Hurtado | Embedded Linux Software Engineer </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -21,9 +21,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://advt3.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://advt3.comfavicon-16x16.png">
 
-    <link rel="canonical" href="https://advt3.com/posts/path_motion_planning/">
+    <link rel="canonical" href="https://advt3.com/">
 
     
+    <link rel="alternate" type="application/rss+xml" href="https://advt3.com/index.xml" title="Santiago Hurtado | Embedded Linux Software Engineer" />
     
     
     
@@ -32,8 +33,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Path and Motion Planning for autonomous vehicles"/>
-<meta name="twitter:description" content="One of the primary purposes of a self-driving vehicle is to be able to arrive at a target location without human intervention."/>
+<meta name="twitter:title" content="Santiago Hurtado | Embedded Linux Software Engineer"/>
+<meta name="twitter:description" content="Embedded Linux Software Engineer"/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -82,7 +83,7 @@
         
         
             
-            <li><a 
+            <li><a class="current"
                    href="/"
                         
                    title="">Home</a></li>
@@ -116,79 +117,75 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    <div class="post animated fadeInDown">
-        <div class="post-content">
-
+    
+    
+        <div class="post animated fadeInDown">
             <div class="post-title">
-                <h3>Path and Motion Planning for autonomous vehicles</h3>
-                
+                <h3><a href="/posts/running_cuda_cpp_python/">Building a Crossplatform Cuda application</a>
+                </h3>
             </div>
-
-            <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
-<p>One of the primary purposes of a self-driving vehicle is to be able to arrive at a target location without human intervention. To accomplish this task, the vehicle must be able to figure out a route to arrive at the destination position (Path Planning) and must be able to navigate the obstacles (Motion Planning) to arrive safely at the intended location. For example, if the car wants to arrive at your home, it should first use the GPS and find the shortest route. From this time has been calculated it is required to get context information such as lanes and other vehicles to navigate safely to your house <a href="https://arxiv.org/pdf/1604.07446.pdf">[1]</a></p>
-<p><img src="/img/road-1209369_640.jpg" alt="road"></p>
-<p><em>Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1209369">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1209369">Pixabay</a></em></p>
-<p>In this project<a href="https://github.com/hurtadosanti/HighwayPathPlanning">[2]</a>, we have implemented a planner that allows the simulated vehicle to navigate through three lanes of a highway, avoiding: <strong>Collide with other cars, exceed speed, acceleration, and/or jerk, and maintaining the lane until is safe to maneuver</strong>.</p>
-<p><img src="/img/path_planning.gif" alt="simulator"></p>
-<h2 id="change-lanes">Change Lanes</h2>
-<p>The <a href="https://github.com/hurtadosanti/HighwayPathPlanning/blob/main/src/planner.cpp">planner::change_lanes</a>  method uses a state machine to decide what maneuver must be executed. Using the Frenet coordinate system the vehicle calculates a safe path to drive through traffic.</p>
-<ol>
-<li>
-<p>Uses sensor fusion to identify cars that are on the same lane, if a vehicle is detected on the same lane</p>
-</li>
-<li>
-<p>When a car is detected first checks that are possible to use the left lane to the overpass. It checks that there are no cars in front or behind within a safe distance(including acceleration)</p>
-</li>
-<li>
-<p>After checks that is possible to use the right lane to the overpass. It checks that there are no cars in front or behind within a safe distance(including acceleration)</p>
-</li>
-<li>
-<p>Finally, if a car is detected to be too close, the vehicle slows down, and when it is possible turns to the left or right lanes</p>
-</li>
-</ol>
-<h2 id="waypoint-planner">Waypoint Planner</h2>
-<p>The <a href="https://github.com/hurtadosanti/HighwayPathPlanning/blob/main/src/planner.cpp">planner::waypoint_planner</a> method verify when is safe to drive using the change_lanes method and drives using the map coordinates.</p>
-<ol>
-<li>
-<p>Gets the car position and map waypoints in S, X, Y</p>
-</li>
-<li>
-<p>Calculates the yaw</p>
-</li>
-<li>
-<p>Convert the frenet points into map coordinates</p>
-</li>
-<li>
-<p>Calculating with the actual lane, the next points required to navigate</p>
-</li>
-<li>
-<p>Transform to vehicle coordinates</p>
-</li>
-<li>
-<p>Smooths the navigation, yaw, and path using the spline library</p>
-</li>
-<li>
-<p>Finally converts back to the X, and Y coordinates to be pass to the vehicle control system</p>
-</li>
-</ol>
-<h2 id="conclusion">Conclusion</h2>
-<p>Throughout this project, we apply the knowledge gathered through multiple lessons and partial implementations of algorithms for breadth/depth-first search, Hybrid A*, naive algorithms, cost functions, and Jerk minimizing trajectories which are some of the basis of modern self-driving vehicles. However, much remains to be done to achieve a complete self-autonomy level 5.</p>
-<p>As with many of the projects before, I have enjoyed implementing the algorithms and understanding their part in the bigger picture.</p>
-<h2 id="references">References</h2>
-<p>[1] A Survey of Motion Planning and ControlTechniques for Self-driving Urban Vehicles <a href="https://arxiv.org/pdf/1604.07446.pdf">https://arxiv.org/pdf/1604.07446.pdf</a></p>
-<p>[2] Highway Path Planning Implementation <a href="https://github.com/hurtadosanti/HighwayPathPlanning">https://github.com/hurtadosanti/HighwayPathPlanning</a></p>
-
-        </div>
-        <div class="post-footer">
-            <div class="info">
-                
-                
+            <div class="post-content">
+                <div class="p_part"><p>Following our Essential environment setup, We implement our first C++ and Cuda application modules. We describe on this post the steps needed to build and integrate the Cuda system with C++ and Python using CMake.</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fas fa-calendar-day"></em><span
+                                class="date">Sat, Feb 1, 2020</span>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-
+    
+    <div class="pagination">
         
-    </div>
 
+<ul class="pagination">
+    
+    <li class="page-item">
+        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+    </li>
+    
+    <li class="page-item">
+    <a href="/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/">1</a></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active"><a class="page-link" href="/page/2/">2</a></li>
+    
+    
+    <li class="page-item disabled">
+    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    </li>
+    
+    <li class="page-item">
+        <a href="/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    </li>
+    
+</ul>
+
+
+    </div>
 
         </div>
     </div>
