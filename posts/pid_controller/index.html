@@ -33,7 +33,7 @@
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PID Controller"/>
-<meta name="twitter:description" content="Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a signal input and computes the desired actuator output."/>
+<meta name="twitter:description" content="A proportional–integral–derivative (PID) controller is a commonly used algorithm on control loops. The controller takes a signal input and calculates the desired actuator output."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -125,41 +125,37 @@
             </div>
 
             <p><a href="http://www.udacity.com/drive"><img src="https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg" alt="Udacity - Self-Driving Car NanoDegree"></a></p>
-<p>Proportional–integral–derivative(PID) controller is commonly used algorithm on control loops. The controller takes a
-signal input and computes the desired actuator output. The PID includes into the feedback loop the present error(P), the
-memory o the past error(I) and the future (D) to reduce overshooting, and base on this values applies a correction.
-On this <strong><a href="https://github.com/hurtadosanti/PIDController">project</a></strong> we have implemented a PID controller in C++ to maneuver the vehicle around the simulator track.</p>
-<p>![drone](/img/mv florin-kozma&ndash;K2rf6hAB1s-unsplash.jpg)
-<em>Photo by [Florin Kozma](<a href="https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText">https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText</a> on <a href="https://unsplash.com/s/photos/controller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></em></p>
+<p>A proportional–integral–derivative (PID) controller is a commonly used algorithm on control loops. The controller takes a signal input and calculates the desired actuator output. The PID includes in the feedback loop the present error (P), past error memory (I), and future (D) to reduce overshooting, and base on these values apply correction. On this <strong><a href="https://github.com/hurtadosanti/PIDController">project</a></strong> we have implemented a PID controller in C++ to maneuver the vehicle around the simulator track.</p>
+<p>![drone](/img/mv florin-kozma&ndash;K2rf6hAB1s-unsplash.jpg)</p>
+<p><em>Photo by [Florin Kozma](<a href="https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText">https://unsplash.com/@florinkozma?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText</a> on <a href="https://unsplash.com/s/photos/controller?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></em></p>
 <h2 id="implementation">Implementation</h2>
-<p>The implementation of the algorithm is quite straight forward. Every time we receive the error we stored on
-the variables and calculate the new value. We use two PID controllers one for the steering and one for the throttle
-control, each with its own initial constants. Given that on practice the integral error can get saturated we <em>clamped
-the saturation</em> to a max value, which provides us with smoother correction when the car started oscillating too much.</p>
+<p>Implementation of the algorithm is fairly straightforward. Every time we get an error, we stored the variables and compute a new value. We use two PID controllers one for steering and one for throttle control, each with its initial constants. Given the fact that in practice the integral error can get saturated we <em>clamped the saturation</em> to a max value, which provides us with smoother correction when the car started oscillating too much.</p>
 <p>The <a href="https://youtu.be/Tuj7dfj4P0c">Video</a> result shows how the car goes around the track.</p>
 <h2 id="parameter-tuning">Parameter Tuning</h2>
-<p>Even thought there are many algorithms that can do the parameter tuning we choose to it manually to understand them
-better. Tuning each parameter at a time by hand helps understanding how it works each of one of them. Even though the
-throttle control uses PID, tuning the parameters is not as evident as the steering control.</p>
-<p>The parameters correspond as follow for steering.</p>
+<p>Although many algorithms can do the parameter adjustment, we choose to understand them manually. Tuning each parameter at a time by hand helps understand how each one of them works. Although throttle control uses PID, fixing parameters is not as evident as steering control.</p>
+<p>The parameters correspond as follows for steering.</p>
 <ul>
 <li>
-<p>P constant value was setup to <em>0.05</em>. The value define how much correction is done. If the value is set to say 1,
-the car will continuously correct the direction making it oscillate heavily on a straight line.</p>
+<p><em>P</em> constant value was setup to <em>0.05</em>. The value defines how much correction is done. If the value is set to say 1, the car will continuously correct the direction making it oscillate heavily on a straight line.</p>
 </li>
 <li>
-<p>I constant value was set <em>0.001</em> with a max value of <em>200</em>. This value was set to 0 initially, and when the
-other two values <strong>P and D</strong> where set, with put a very small value that helps the car driver a bit smoother.</p>
+<p><em>I</em> Constant value was set <em>0.001</em> with a max value of <em>200</em>. This value was set to 0 initially, and when the other two values <strong>P and D</strong> were set, with put a very small value that helps the car driver a bit smoother.</p>
 </li>
 <li>
-<p>D constant value was set to <em>3</em>. Finally the D value was set high since it helps turning on the curves harder.</p>
+<p><em>D</em> constant value was set to <em>3</em>. Finally, the D value was set high since it helps to turn on the curves harder.</p>
 </li>
 </ul>
-<p>The parameters correspond as follow for throttle.</p>
+<p>The parameters correspond as follows for throttle.</p>
 <ul>
-<li>P constant value was setup to <em>0.09</em></li>
-<li>I constant value was set <em>0.0001</em> with a max value of <em>500</em></li>
-<li>D constant value was set to <em>0.5</em></li>
+<li>
+<p><em>P</em> constant value was setup to <em>0.09</em></p>
+</li>
+<li>
+<p><em>I</em> constant value was set <em>0.0001</em> with a max value of <em>500</em></p>
+</li>
+<li>
+<p><em>D</em> constant value was set to <em>0.5</em></p>
+</li>
 </ul>
 <h2 id="references">References</h2>
 <p><a href="https://www.ni.com/en-us/innovations/white-papers/06/pid-theory-explained.html">https://www.ni.com/en-us/innovations/white-papers/06/pid-theory-explained.html</a></p>
