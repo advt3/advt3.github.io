@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://advt3.com/posts/pid_controller/</loc>
-    <lastmod>2020-12-06T10:54:53+01:00</lastmod>
+    <loc>https://advt3.com/posts/</loc>
+    <lastmod>2021-01-30T15:11:59+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://advt3.com/posts/</loc>
+    <loc>https://advt3.com/posts/ros_introduction/</loc>
+    <lastmod>2021-01-30T15:11:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://advt3.com/posts/pid_controller/</loc>
     <lastmod>2020-12-06T10:54:53+01:00</lastmod>
   </url>
   
